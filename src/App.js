@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { binaryToHex, binaryToDecimal } from "./helper";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+  const testValue = "0101010101011101";
+
+  const hexa = binaryToHex(testValue);
+  const decimal = binaryToDecimal(testValue);
+
+  console.log(hexa);
+  console.log(decimal);
+
+  return <h1>test</h1>;
+};
 
 export default App;
+
+// create helper functions folder
+// binaryToHex.js
+// binaryToDecimal.js
+// and so on
