@@ -1,21 +1,22 @@
 import "./App.css";
-import { binaryToHex, binaryToDecimal } from "./helper";
+import { binaryToHex } from "./utils/binaryToHex";
+import { binaryToDecimal } from "./utils/binaryToDecimal";
+import { decimalToBinary } from "./utils/decimalToBinary";
+import { hexadecimalToDecimal } from "./utils/hexadecimalToDecimal";
 
 const App = () => {
-  const testValue = "0101010101011101";
+  const hexadecimal = "e7aa9";
 
-  const hexa = binaryToHex(testValue);
-  const decimal = binaryToDecimal(testValue);
+  const decimal = hexadecimalToDecimal(hexadecimal);
 
-  console.log(hexa);
   console.log(decimal);
 
-  return <h1>test</h1>;
+  return (
+    <div>
+      <h1>test</h1>
+      <h1>more testong</h1>
+    </div>
+  );
 };
 
 export default App;
-
-// create helper functions folder
-// binaryToHex.js
-// binaryToDecimal.js
-// and so on

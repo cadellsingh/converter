@@ -1,3 +1,5 @@
+import { reverseString } from "./reverseString";
+
 export const binaryToHex = (binary) => {
   const binarySplit = splitString(reverseString(binary));
   let hexadecimal = "";
@@ -11,7 +13,6 @@ export const binaryToHex = (binary) => {
   return reverseString(hexadecimal);
 };
 
-const reverseString = (string) => string.split("").reverse().join("");
 const splitString = (string) => string.match(/.{1,4}/g);
 
 const binarySum = (currentBinary) => {
@@ -34,15 +35,4 @@ const binaryLetter = (sum) => {
     14: "E",
     15: "F",
   }[sum];
-};
-
-export const binaryToDecimal = (binary) => {
-  binary = reverseString(binary);
-  let sum = 0;
-
-  for (let i = 0; i < binary.length; i++) {
-    sum += binary[i] === "1" && Math.pow(2, i);
-  }
-
-  return sum;
 };
