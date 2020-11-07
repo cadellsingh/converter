@@ -1,4 +1,5 @@
-import { reverseString } from "./reverseString";
+// import { reverseString } from "./reverseString";
+import { reverseString } from "./helpers";
 
 export const binaryToDecimal = (binary) => {
   binary = reverseString(binary);

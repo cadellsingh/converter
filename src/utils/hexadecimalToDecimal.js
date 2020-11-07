@@ -1,3 +1,5 @@
+import { binaryValue } from "./helpers";
+
 export const hexadecimalToDecimal = (hexadecimal) => {
   let counter = hexadecimal.length - 1;
   let total = 0;
@@ -12,15 +14,4 @@ export const hexadecimalToDecimal = (hexadecimal) => {
   }
 
   return total;
-};
-
-const binaryValue = (letter) => {
-  return {
-    A: 10,
-    B: 11,
-    C: 12,
-    D: 13,
-    E: 14,
-    F: 15,
-  }[letter.toUpperCase()];
 };

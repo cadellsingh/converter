@@ -1,6 +1,6 @@
 import { reverseString } from "./helpers";
 
-export const binaryToHex = (binary) => {
+export const binaryToHexadecimal = (binary) => {
   const binarySplit = splitString(reverseString(binary));
   let hexadecimal = "";
 
@@ -36,3 +36,5 @@ const binaryLetter = (sum) => {
     15: "F",
   }[sum];
 };
+
+// calculation on how to convert binary to hexadecimal
