@@ -12,3 +12,14 @@ export const binaryValue = (letter) => {
     F: 15,
   }[letter.toUpperCase()];
 };
+
+export const binaryLetter = (sum) => {
+  return {
+    10: "A",
+    11: "B",
+    12: "C",
+    13: "D",
+    14: "E",
+    15: "F",
+  }[sum];
+};
