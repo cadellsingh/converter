@@ -18,9 +18,10 @@ const App = () => {
   const [decimalValid, setDecimalValid] = useState(true);
   const [hexaValid, setHexaValid] = useState(true);
 
-  const [disabled, setDisabled] = useState(true);
-  // maybe disabled for each input
-  // eg binaryInputDisabled ?
+  // look for ways to refactor
+  const [binaryInputDisabled, setBinaryInputDisabled] = useState(true);
+  const [decimalInputDisabled, setDecimalInputDisabled] = useState(true);
+  const [hexaInputDisabled, sethexaInputDisabled] = useState(true);
 
   const handleOnChange = (event) => {
     const name = event.target.name;
@@ -35,6 +36,13 @@ const App = () => {
     name === "decimal" && setDecimalValid(decimalValidation(value));
     name === "binary" && setBinaryValid(binaryValidation(value));
   };
+
+  // onSubmit function
+  // update state directly
+  // setInput({
+  //   ...input,
+  //   [name]: value, [name] -> will be binary / hexa / decimal
+  // });
 
   return (
     <div>
