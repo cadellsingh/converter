@@ -5,13 +5,17 @@
 // decimal validation -> only numbers
 
 export const binaryValidation = (binary) => {
-  return /^[0-1]+$/.test(binary);
+  return /^[0-1]+$/.test(binary) || emptyString(binary);
 };
 
 export const hexadecimalValidation = (hexadecimal) => {
-  return /^[A-F0-9]+$/.test(hexadecimal);
+  return /^[A-Fa-f0-9]+$/.test(hexadecimal) || emptyString(hexadecimal);
 };
 
 export const decimalValidation = (decimal) => {
-  return /^[0-9]+$/.test(decimal);
+  return /^[0-9]+$/.test(decimal) || emptyString(decimal);
+};
+
+const emptyString = (string) => {
+  return string === "";
 };
