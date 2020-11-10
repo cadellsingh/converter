@@ -19,6 +19,8 @@ const App = () => {
   const [hexaValid, setHexaValid] = useState(true);
 
   const [disabled, setDisabled] = useState(true);
+  // maybe disabled for each input
+  // eg binaryInputDisabled ?
 
   const handleOnChange = (event) => {
     const name = event.target.name;
