@@ -5,6 +5,7 @@ import {
   hexadecimalValidation,
   binaryValidation,
 } from "./utils/validation";
+import NumberSystem from "./NumberSystem";
 
 const App = () => {
   const [input, setInput] = useState({
@@ -13,10 +14,12 @@ const App = () => {
     decimal: "",
   });
 
-  // prob same thing as above
-  const [valid, setValid] = useState(true);
+  const [binaryValid, setBinaryValid] = useState(true);
+  const [decimalValid, setDecimalValid] = useState(true);
+  const [hexaValid, setHexaValid] = useState(true);
 
-  // do validation in here - well maybe
+  const [disabled, setDisabled] = useState(true);
+
   const handleOnChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -26,49 +29,34 @@ const App = () => {
       [name]: value,
     });
 
-    // prob switch statement
-    if (name === "hexadecimal") {
-      setValid(hexadecimalValidation(value));
-    } else if (name === "decimal") {
-      setValid(decimalValidation(value));
-    } else if (name === "binary") {
-      setValid(binaryValidation(value));
-    }
+    name === "hexadecimal" && setHexaValid(hexadecimalValidation(value));
+    name === "decimal" && setDecimalValid(decimalValidation(value));
+    name === "binary" && setBinaryValid(binaryValidation(value));
   };
 
   return (
     <div>
       <form>
-        {/* can extract into own component*/}
-        <label style={{ color: valid ? "black" : "red" }}>
-          Decimal
-          <input
-            type="text"
-            name="decimal"
-            value={input.decimal}
-            onChange={handleOnChange}
-          />
-        </label>
+        <NumberSystem
+          input={input.decimal}
+          valid={decimalValid}
+          text="decimal"
+          handleOnChange={handleOnChange}
+        />
 
-        <label>
-          Hexadecimal
-          <input
-            type="text"
-            name="hexadecimal"
-            value={input.hexadecimal}
-            onChange={handleOnChange}
-          />
-        </label>
+        <NumberSystem
+          input={input.hexadecimal}
+          valid={hexaValid}
+          text="hexadecimal"
+          handleOnChange={handleOnChange}
+        />
 
-        {/*<label>*/}
-        {/*  Binary*/}
-        {/*  <input*/}
-        {/*    type="text"*/}
-        {/*    name="binary"*/}
-        {/*    value={inputValue}*/}
-        {/*    onChange={handleOnChange}*/}
-        {/*  />*/}
-        {/*</label>*/}
+        <NumberSystem
+          input={input.binary}
+          valid={binaryValid}
+          text="binary"
+          handleOnChange={handleOnChange}
+        />
       </form>
     </div>
   );
