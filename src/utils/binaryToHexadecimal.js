@@ -5,6 +5,8 @@ export const binaryToHexadecimal = (binary) => {
   const binarySplit = splitString(reverseString(binary));
   let hexadecimal = "";
 
+  console.log(binarySplit);
+
   for (const value of binarySplit) {
     let sum = binarySum(value);
 
@@ -14,7 +16,10 @@ export const binaryToHexadecimal = (binary) => {
   return reverseString(hexadecimal);
 };
 
-const splitString = (string) => string.match(/.{1,4}/g);
+const splitString = (string) => {
+  string = string === "" ? " " : string;
+  return string.match(/.{1,4}/g);
+};
 
 const binarySum = (currentBinary) => {
   let sum = 0;
