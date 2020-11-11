@@ -1,15 +1,12 @@
 import "./App.css";
 import React, { useState } from "react";
-import {
-  decimalValidation,
-  hexadecimalValidation,
-  binaryValidation,
-} from "./utils/validation";
 import NumberSystem from "./NumberSystem";
 import { decimalToBinary } from "./utils/decimalToBinary";
 import { decimalToHexadecimal } from "./utils/decimalToHexadecimal";
 import { binaryToDecimal } from "./utils/binaryToDecimal";
 import { binaryToHexadecimal } from "./utils/binaryToHexadecimal";
+import { hexadecimalToBinary } from "./utils/hexadecimalToBinary";
+import { hexadecimalToDecimal } from "./utils/hexadecimalToDecimal";
 
 const App = () => {
   const [input, setInput] = useState({
@@ -17,11 +14,6 @@ const App = () => {
     hexadecimal: "",
     decimal: "",
   });
-
-  // move this to NumberSystems component
-  const [binaryValid, setBinaryValid] = useState(true);
-  const [decimalValid, setDecimalValid] = useState(true);
-  const [hexaValid, setHexaValid] = useState(true);
 
   const handleOnChange = (event) => {
     const name = event.target.name;
@@ -31,29 +23,30 @@ const App = () => {
       ...input,
       [name]: value,
     });
-
-    // name === "hexadecimal" && setHexaValid(hexadecimalValidation(value));
-    // name === "decimal" && setDecimalValid(decimalValidation(value));
-    // name === "binary" && setBinaryValid(binaryValidation(value));
   };
 
   const handleOnSubmit = (event) => {
     const { decimal, binary, hexadecimal } = input;
 
-    decimal !== "" && decimalConversion(decimal);
+    // decimal !== "" && decimalConversion(decimal);
+    // binary !== "" && binaryConversion(binary);
+    // hexadecimal !== "" && hexadecimalConversion(hexadecimal);
+
+    // decimalConversion(decimal);
+    // binaryConversion(binary);
+    // hexadecimalConversion(hexadecimal);
 
     event.preventDefault();
   };
+
+  // could use onfocus event to change the values
+  // take out the submit button
 
   const decimalConversion = (decimal) => {
     setInput({
       ...input,
       binary: decimalToBinary(decimal),
-    });
-
-    setInput({
-      ...input,
-      ["hexadecimal"]: decimalToHexadecimal(decimal),
+      hexadecimal: decimalToHexadecimal(decimal),
     });
   };
 
@@ -61,11 +54,15 @@ const App = () => {
     setInput({
       ...input,
       decimal: binaryToDecimal(binary),
+      hexadecimal: binaryToHexadecimal(binary),
     });
+  };
 
+  const hexadecimalConversion = (hexadecimal) => {
     setInput({
       ...input,
-      ["hexadecimal"]: binaryToHexadecimal(binary),
+      binary: hexadecimalToBinary(hexadecimal),
+      decimal: hexadecimalToDecimal(hexadecimal),
     });
   };
 
@@ -74,21 +71,18 @@ const App = () => {
       <form onSubmit={handleOnSubmit}>
         <NumberSystem
           input={input.decimal}
-          valid={decimalValid}
           text="decimal"
           handleOnChange={handleOnChange}
         />
 
         <NumberSystem
           input={input.hexadecimal}
-          valid={hexaValid}
           text="hexadecimal"
           handleOnChange={handleOnChange}
         />
 
         <NumberSystem
           input={input.binary}
-          valid={binaryValid}
           text="binary"
           handleOnChange={handleOnChange}
         />
