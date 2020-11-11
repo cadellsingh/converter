@@ -1,8 +1,18 @@
 import React from "react";
-import { decimalValidation } from "./utils/validation";
+import {
+  binaryValidation,
+  decimalValidation,
+  hexadecimalValidation,
+} from "./utils/validation";
 
-const NumberSystem = ({ input, valid, text, handleOnChange }) => {
-  // console.log(decimalValidation(input));
+const NumberSystem = ({ input, text, handleOnChange }) => {
+  const validation = (text) => {
+    return {
+      binary: binaryValidation(input),
+      decimal: decimalValidation(input),
+      hexadecimal: hexadecimalValidation(input),
+    }[text];
+  };
 
   const capitalize = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -11,12 +21,8 @@ const NumberSystem = ({ input, valid, text, handleOnChange }) => {
   // if input is an empty string use that as a
   // boolean value to disable form input
 
-  // prob move validation over here
-  // send input and destructure object to get name -> decimal / binary / hexa
-  // ^ it prob wont validate each letter
-
   return (
-    <label style={{ color: valid ? "black" : "red" }}>
+    <label style={{ color: validation(text) ? "black" : "red" }}>
       {capitalize(text)}
       <input
         type="text"
@@ -24,6 +30,7 @@ const NumberSystem = ({ input, valid, text, handleOnChange }) => {
         value={input}
         // placeholder="test"
         onChange={handleOnChange}
+        // disabled={input === ""}
       />
     </label>
   );
