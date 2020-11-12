@@ -1,7 +1,12 @@
 import { binaryValue } from "./helpers";
 import { reverseString } from "./helpers";
+import { hexadecimalValidation } from "./validation";
 
 export const hexadecimalToBinary = (hexadecimal) => {
+  if (!hexadecimalValidation(hexadecimal)) {
+    return "";
+  }
+
   let binary = "";
 
   for (const value of hexadecimal.split("")) {

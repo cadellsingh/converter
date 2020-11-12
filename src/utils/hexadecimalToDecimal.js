@@ -1,6 +1,11 @@
 import { binaryValue } from "./helpers";
+import { hexadecimalValidation } from "./validation";
 
 export const hexadecimalToDecimal = (hexadecimal) => {
+  if (!hexadecimalValidation(hexadecimal)) {
+    return "";
+  }
+
   let counter = hexadecimal.length - 1;
   let total = 0;
 

@@ -1,7 +1,11 @@
-// import { reverseString } from "./reverseString";
 import { reverseString } from "./helpers";
+import { binaryValidation } from "./validation";
 
 export const binaryToDecimal = (binary) => {
+  if (!binaryValidation(binary)) {
+    return "";
+  }
+
   binary = reverseString(binary);
   let sum = 0;
 

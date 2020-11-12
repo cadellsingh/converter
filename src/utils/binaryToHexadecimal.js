@@ -1,11 +1,14 @@
 import { reverseString } from "./helpers";
 import { binaryLetter } from "./helpers";
+import { binaryValidation } from "./validation";
 
 export const binaryToHexadecimal = (binary) => {
+  if (!binaryValidation(binary)) {
+    return "";
+  }
+
   const binarySplit = splitString(reverseString(binary));
   let hexadecimal = "";
-
-  console.log(binarySplit);
 
   for (const value of binarySplit) {
     let sum = binarySum(value);

@@ -1,6 +1,11 @@
 import { reverseString } from "./helpers";
+import { decimalValidation } from "./validation";
 
 export const decimalToBinary = (decimal) => {
+  if (!decimalValidation(decimal)) {
+    return "";
+  }
+
   let binary = "";
 
   while (decimal > 0) {
