@@ -8,13 +8,7 @@ const NumberSystem = ({ input, text, handleOnChange, valid }) => {
   return (
     <label style={{ color: valid ? "black" : "red" }}>
       {capitalize(text)}
-      <input
-        type="text"
-        name={text}
-        value={input}
-        onChange={handleOnChange}
-        // disabled={!valid}
-      />
+      <input type="text" name={text} value={input} onChange={handleOnChange} />
     </label>
   );
 };
