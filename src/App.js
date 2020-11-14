@@ -12,6 +12,9 @@ import {
   decimalValidation,
   hexadecimalValidation,
 } from "./utils/validation";
+import BinaryCalculation from "./BinaryCalculations";
+import HexadecimalCalculation from "./HexadecimalCalculation";
+import DecimalCalculation from "./DecimalCalculation";
 
 const App = () => {
   const [binary, setBinary] = useState("");
@@ -69,6 +72,10 @@ const App = () => {
           valid={hexadecimalValidation(hexadecimal)}
         />
       </form>
+
+      <BinaryCalculation />
+      <HexadecimalCalculation />
+      <DecimalCalculation />
     </div>
   );
 };
