@@ -2,7 +2,7 @@ import React from "react";
 
 const DecimalCalculation = () => {
   return (
-    <div>
+    <div className="calculation">
       <h1>decimal</h1>
     </div>
   );
