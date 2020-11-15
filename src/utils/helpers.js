@@ -23,3 +23,8 @@ export const binaryLetter = (sum) => {
     15: "F",
   }[sum];
 };
+
+export const splitString = (string) => {
+  string = string === "" ? " " : string;
+  return string.match(/.{1,4}/g);
+};
