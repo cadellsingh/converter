@@ -73,9 +73,9 @@ const App = () => {
         />
       </form>
 
-      <BinaryCalculation />
-      <HexadecimalCalculation />
-      <DecimalCalculation />
+      <BinaryCalculation binary={binary} />
+      <HexadecimalCalculation hexadecimal={hexadecimal} />
+      <DecimalCalculation decimal={decimal} />
     </div>
   );
 };
