@@ -18,7 +18,7 @@ export const hexadecimalToBinary = (hexadecimal) => {
   return binary;
 };
 
-const decimalToBinary = (decimal) => {
+export const decimalToBinary = (decimal) => {
   let binary = "";
 
   while (decimal > 0) {
