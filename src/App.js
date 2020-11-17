@@ -73,8 +73,11 @@ const App = () => {
         />
       </form>
 
-      <BinaryCalculation binary={binary} />
-      <HexadecimalCalculation hexadecimal={hexadecimal} />
+      {/*could add a onfocus to see which is being focused*/}
+      {/* if decimal is being focused then do decimal calculation and so forth*/}
+
+      {/*<BinaryCalculation binary={binary} />*/}
+      {/*<HexadecimalCalculation hexadecimal={hexadecimal} />*/}
       <DecimalCalculation decimal={decimal} />
     </div>
   );
