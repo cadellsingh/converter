@@ -1,6 +1,12 @@
 import React from "react";
 
-const NumberSystem = ({ input, text, handleOnChange, valid }) => {
+const NumberSystem = ({
+  input,
+  text,
+  handleOnChange,
+  valid,
+  handleOnClick,
+}) => {
   const capitalize = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
@@ -8,7 +14,13 @@ const NumberSystem = ({ input, text, handleOnChange, valid }) => {
   return (
     <label style={{ color: valid ? "black" : "red" }}>
       {capitalize(text)}
-      <input type="text" name={text} value={input} onChange={handleOnChange} />
+      <input
+        type="text"
+        name={text}
+        value={input}
+        onChange={handleOnChange}
+        onClick={handleOnClick}
+      />
     </label>
   );
 };
