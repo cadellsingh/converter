@@ -1,25 +1,31 @@
 import "./App.css";
 import React, { useState } from "react";
-import NumberSystem from "./NumberSystem";
+import DecimalCalculation from "./DecimalCalculation";
+import NumberSystemRow from "./NumberSysemRow";
 import { decimalToBinary } from "./utils/decimalToBinary";
 import { decimalToHexadecimal } from "./utils/decimalToHexadecimal";
 import { binaryToDecimal } from "./utils/binaryToDecimal";
 import { binaryToHexadecimal } from "./utils/binaryToHexadecimal";
-import { hexadecimalToBinary } from "./utils/hexadecimalToBinary";
 import { hexadecimalToDecimal } from "./utils/hexadecimalToDecimal";
-import {
-  binaryValidation,
-  decimalValidation,
-  hexadecimalValidation,
-} from "./utils/validation";
-import BinaryCalculation from "./BinaryCalculations";
-import HexadecimalCalculation from "./HexadecimalCalculation";
-import DecimalCalculation from "./DecimalCalculation";
+import { hexadecimalToBinary } from "./utils/hexadecimalToBinary";
+import CalculationRow from "./CalculationRow";
 
 const App = () => {
-  const [binary, setBinary] = useState("");
-  const [decimal, setDecimal] = useState("");
-  const [hexadecimal, setHexadecimal] = useState("");
+  const [input, setInput] = useState({
+    decimal: "",
+    binary: "",
+    hexadecimal: "",
+  });
+
+  const [clickedOn, setClickedOn] = useState({
+    decimal: false,
+    binary: false,
+    hexadecimal: false,
+  });
+
+  // const [binaryClickedOn, setBinaryClickedOn] = useState(false);
+  // const [decimalClickedO, setDecimalClickedOn] = useState(false);
+  // const [hexaClickedOn, setHexaClickedOn] = useState(false);
 
   const handleOnChange = (event) => {
     const name = event.target.name;
@@ -30,55 +36,53 @@ const App = () => {
     name === "hexadecimal" && hexadecimalConversion(value);
   };
 
+  const handleOnClick = (event) => {
+    const name = event.target.name;
+
+    setClickedOn({
+      ...clickedOn,
+      [name]: !clickedOn,
+    });
+  };
+
+  console.log(clickedOn);
+
   const decimalConversion = (decimal) => {
-    setDecimal(decimal);
-    setBinary(decimalToBinary(decimal));
-    setHexadecimal(decimalToHexadecimal(decimal));
+    setInput({
+      ...input,
+      decimal: decimal,
+      binary: decimalToBinary(decimal),
+      hexadecimal: decimalToHexadecimal(decimal),
+    });
   };
 
   const binaryConversion = (binary) => {
-    setBinary(binary);
-    setDecimal(binaryToDecimal(binary));
-    setHexadecimal(binaryToHexadecimal(binary));
+    setInput({
+      ...input,
+      binary: binary,
+      decimal: binaryToDecimal(binary),
+      hexadecimal: binaryToHexadecimal(binary),
+    });
   };
 
   const hexadecimalConversion = (hexadecimal) => {
-    setHexadecimal(hexadecimal);
-    setDecimal(hexadecimalToDecimal(hexadecimal));
-    setBinary(hexadecimalToBinary(hexadecimal));
+    setInput({
+      ...input,
+      hexadecimal: hexadecimal,
+      decimal: hexadecimalToDecimal(hexadecimal),
+      binary: hexadecimalToBinary(hexadecimal),
+    });
   };
 
   return (
     <div>
-      <form>
-        <NumberSystem
-          input={decimal}
-          text="decimal"
-          handleOnChange={handleOnChange}
-          valid={decimalValidation(decimal)}
-        />
+      <NumberSystemRow
+        input={input}
+        handleOnChange={handleOnChange}
+        handleOnClick={handleOnClick}
+      />
 
-        <NumberSystem
-          input={binary}
-          text="binary"
-          handleOnChange={handleOnChange}
-          valid={binaryValidation(binary)}
-        />
-
-        <NumberSystem
-          input={hexadecimal}
-          text="hexadecimal"
-          handleOnChange={handleOnChange}
-          valid={hexadecimalValidation(hexadecimal)}
-        />
-      </form>
-
-      {/*could add a onfocus to see which is being focused*/}
-      {/* if decimal is being focused then do decimal calculation and so forth*/}
-
-      {/*<BinaryCalculation binary={binary} />*/}
-      {/*<HexadecimalCalculation hexadecimal={hexadecimal} />*/}
-      <DecimalCalculation decimal={decimal} />
+      <CalculationRow input={input} />
     </div>
   );
 };
