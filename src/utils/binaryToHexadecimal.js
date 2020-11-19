@@ -12,7 +12,7 @@ export const binaryToHexadecimal = (binary) => {
   let hexadecimal = "";
 
   for (const value of binarySplit) {
-    let sum = binarySum(value);
+    let sum = binarySum(value.trim());
 
     hexadecimal += sum <= 9 ? sum : binaryLetter(sum);
   }
@@ -21,8 +21,8 @@ export const binaryToHexadecimal = (binary) => {
 };
 
 const binarySum = (currentBinary) => {
-  let sum = 0;
   const binaryValues = [1, 2, 4, 8];
+  let sum = currentBinary === "" ? "" : 0;
 
   for (let i = 0; i < currentBinary.length; i++) {
     sum += currentBinary[i] === "1" && binaryValues[i];

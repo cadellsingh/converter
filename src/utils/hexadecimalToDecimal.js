@@ -7,7 +7,7 @@ export const hexadecimalToDecimal = (hexadecimal) => {
   }
 
   let counter = hexadecimal.length - 1;
-  let total = 0;
+  let total = hexadecimal === "" ? "" : 0;
 
   for (const value of hexadecimal) {
     let sum = isNaN(value) ? binaryValue(value) : parseInt(value, 10);
