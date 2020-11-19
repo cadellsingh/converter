@@ -1,64 +1,51 @@
 import React from "react";
-import { binaryLetter, splitString } from "./utils/helpers";
+import { binaryValue, uid } from "./utils/helpers";
 import { reverseString } from "./utils/helpers";
+import { decimalToBinary } from "./utils/hexadecimalToBinary";
 
-// decimalToHexadecimal
-// binaryToHexadecimal
+// hexaToDeci
+// hexaToBinary
 
-const HexadecimalCalculation = ({ binary, decimal }) => {
-  binary = reverseString(binary);
-
-  const binaryToHexaCalc = (binary) => {
-    return splitString(binary).map((data, index) => {
-      const binaryValues = [1, 2, 4, 8];
-      let sum = 0;
-
-      data.split("").forEach((digit, index) => {
-        sum += digit === "1" && binaryValues[index];
-      });
-
-      let hexadecimal = sum <= 9 ? sum : binaryLetter(sum);
+const HexadecimalCalculation = ({ hexadecimal }) => {
+  const hexadecimalToBinaryCalc = (hexadecimal) => {
+    return hexadecimal.split("").map((alpha) => {
+      let hex = isNaN(alpha) ? binaryValue(alpha) : alpha;
+      let binary = decimalToBinary(hex);
 
       return (
-        <p key={index}>
-          {data}: {hexadecimal}
+        <p key={uid()}>
+          {alpha}: {binary}
         </p>
       );
     });
   };
 
-  const decimalToHexadecimalCalc = (decimal) => {
-    let bitNum = 0;
-    let calculations = [];
+  const hexadecimalToDecimalCalc = (hexadecimal) => {
+    let hexaArray = reverseString(hexadecimal)
+      .split("")
+      .map((alpha) => {
+        return isNaN(alpha) ? binaryValue(alpha) : parseInt(alpha);
+      });
 
-    while (decimal > 0) {
-      let quotient = Math.floor(decimal / 16);
-      let remainder = decimal % 16;
-      let remainderHex = remainder > 9 ? binaryLetter(remainder) : remainder;
-
-      calculations.push(
-        <div>
-          <p>Division by 16: {decimal} / 16</p>
-          <p>Quotient: {quotient}</p>
-          <p>Remainder (decimal): {remainder}</p>
-          <p>Remainder (hexadecimal): {remainderHex}</p>
-          <p>Bit Number: {bitNum}</p>
-          <p>===</p>
-        </div>
+    return hexaArray.map((digit, index) => {
+      let sum = digit * Math.pow(16, index);
+      return (
+        <p key={uid()}>
+          {digit} * 16 ^ {index}: {sum}
+        </p>
       );
-
-      bitNum++;
-      decimal = quotient;
-    }
-
-    return calculations;
+    });
   };
 
   return (
-    <div className="test">
+    <div className="calculation-container">
       <div>
-        <h1>Calculation</h1>
-        {decimalToHexadecimalCalc(decimal)}
+        <h3>hexa to deci</h3>
+        {hexadecimalToDecimalCalc(hexadecimal)}
+      </div>
+      <div>
+        <h3>hexa to binary</h3>
+        {hexadecimalToBinaryCalc(hexadecimal)}
       </div>
     </div>
   );

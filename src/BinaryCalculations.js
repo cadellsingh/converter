@@ -1,55 +1,57 @@
 import React from "react";
-import { binaryValue } from "./utils/helpers";
-import { decimalToBinary } from "./utils/hexadecimalToBinary";
+import { binaryLetter, reverseString, splitString, uid } from "./utils/helpers";
 
-// import validation method (maybe)
-// could prob use onFocus to prop to know when to display calc
-// put validation in each calculation method
+// binaryToDec
+// binaryToHexa
 
-const BinaryCalculation = ({ decimal, hexadecimal }) => {
-  const hexadecimalToBinaryCalc = (hexadecimal) => {
-    return hexadecimal.split("").map((alpha) => {
-      let hex = isNaN(alpha) ? binaryValue(alpha) : alpha;
-      let binary = decimalToBinary(hex);
+const BinaryCalculation = ({ binary }) => {
+  binary = reverseString(binary);
+
+  const binaryToHexaCalc = (binary) => {
+    return splitString(binary).map((data) => {
+      const binaryValues = [1, 2, 4, 8];
+      let sum = 0;
+
+      data.split("").forEach((digit, index) => {
+        sum += digit === "1" && binaryValues[index];
+      });
+
+      let hexadecimal = sum <= 9 ? sum : binaryLetter(sum);
 
       return (
-        <p>
-          {alpha}: {binary}
+        <p key={uid()}>
+          {data}: {hexadecimal}
         </p>
       );
     });
   };
 
-  const decimalToBinaryCalc = (decimal) => {
-    let bitNum = 0;
-    let calculations = [];
-
-    while (decimal > 0) {
-      let quotient = Math.floor(decimal / 2);
-      let remainder = decimal % 2;
-
-      calculations.push(
-        <div>
-          <p>Division by 2: {decimal} / 2</p>
-          <p>Quotient: {quotient}</p>
-          <p>Remainder: {remainder}</p>
-          <p>Bit Number: {bitNum}</p>
-          <p>====</p>
-        </div>
+  const binaryToDecimalCalc = (binary) => {
+    return binary.split("").map((digit, index) => {
+      let num = digit * Math.pow(2, index);
+      return (
+        <p key={index}>
+          {digit} * 2 ^ {index}: {num}
+        </p>
       );
-
-      bitNum++;
-      decimal = quotient;
-    }
-
-    return calculations;
+    });
   };
 
+  // could make another component
+  //  like calculation and then i'll pass whatever needs to be shown
+
+  // THEY ARE SOME BUGS IN THE BINARY CALC
+  //
+
   return (
-    <div className="test">
+    <div className="calculation-container">
       <div>
-        <h1>Calculation</h1>
-        {decimalToBinaryCalc(decimal)}
+        <h3>binary to hexa</h3>
+        {binaryToHexaCalc(binary)}
+      </div>
+      <div>
+        <h3>binary to dec</h3>
+        {binaryToDecimalCalc(binary)}
       </div>
     </div>
   );
