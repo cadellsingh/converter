@@ -55,15 +55,15 @@ const DecimalCalculation = ({ decimal }) => {
   };
 
   return (
-    <div>
-      <div className="calculation">
+    <div className="test">
+      <div>
         <h1>decimal to binary Calc</h1>
         {/*{decimalToBinaryCalc(decimal)}*/}
       </div>
-      <div className="calculation">
-        <h1>decimal to hexadecimal Calc</h1>
-        {decimalToHexadecimalCalc(decimal)}
-      </div>
+      {/*<div className="calculation">*/}
+      {/*  <h1>decimal to hexadecimal Calc</h1>*/}
+      {/*  {decimalToHexadecimalCalc(decimal)}*/}
+      {/*</div>*/}
     </div>
   );
 };

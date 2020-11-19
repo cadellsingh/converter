@@ -41,16 +41,16 @@ const BinaryCalculation = ({ binary }) => {
   };
 
   return (
-    <div>
-      <div className="calculation">
+    <div className="test">
+      <div>
         <h1>binary To dec Calculation</h1>
-        {binaryToDecimalCalc(binary)}
+        {/*{binaryToDecimalCalc(binary)}*/}
       </div>
 
-      <div className="calculation">
-        <h1>binary to hexa Calculation</h1>
-        {binaryToHexaCalc(binary)}
-      </div>
+      {/*<div className="calculation">*/}
+      {/*  <h1>binary to hexa Calculation</h1>*/}
+      {/*  {binaryToHexaCalc(binary)}*/}
+      {/*</div>*/}
     </div>
   );
 };

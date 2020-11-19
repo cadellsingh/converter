@@ -35,15 +35,15 @@ const HexadecimalCalculation = ({ hexadecimal }) => {
   };
 
   return (
-    <div>
-      <div className="calculation">
+    <div className="test">
+      <div>
         <h1>hexadecimal to binary calc</h1>
-        {hexadecimalToBinaryCalc(hexadecimal)}
+        {/*{hexadecimalToBinaryCalc(hexadecimal)}*/}
       </div>
-      <div className="calculation">
-        <h1>hexadecimal to decimal calc</h1>
-        {hexadecimalToDecimalCalc(hexadecimal)}
-      </div>
+      {/*<div className="calculation">*/}
+      {/*  <h1>hexadecimal to decimal calc</h1>*/}
+      {/*  {hexadecimalToDecimalCalc(hexadecimal)}*/}
+      {/*</div>*/}
     </div>
   );
 };

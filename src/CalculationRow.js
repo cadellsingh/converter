@@ -1,14 +1,21 @@
 import React from "react";
+import BinaryCalculation from "./BinaryCalculations";
+import HexadecimalCalculation from "./HexadecimalCalculation";
+import DecimalCalculation from "./DecimalCalculation";
+
+// may have to switch up certain methods
+// for example binaryCalculation might have decimalToBinary & hexadecimalToBinary
+// same for the other methods
+// gonna have to pass two number systems to each calculation component
 
 const CalculationRow = ({ input }) => {
-  return (
-    <div>
-      <h1>hello</h1>
+  const { decimal, hexadecimal, binary } = input;
 
-      {/* if decimal is being focused then do decimal calculation and so forth*/}
-      {/*<BinaryCalculation binary={binary} />*/}
-      {/*<HexadecimalCalculation hexadecimal={hexadecimal} />*/}
-      {/*<DecimalCalculation decimal={decimal} />*/}
+  return (
+    <div className="container">
+      <BinaryCalculation binary={binary} />
+      <HexadecimalCalculation hexadecimal={hexadecimal} />
+      <DecimalCalculation decimal={decimal} />
     </div>
   );
 };
