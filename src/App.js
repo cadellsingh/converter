@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useState } from "react";
 import DecimalCalculation from "./DecimalCalculation";
-import NumberSystemRow from "./NumberSysemRow";
+import NumberSystemRow from "./NumberSystemRow";
 import { decimalToBinary } from "./utils/decimalToBinary";
 import { decimalToHexadecimal } from "./utils/decimalToHexadecimal";
 import { binaryToDecimal } from "./utils/binaryToDecimal";

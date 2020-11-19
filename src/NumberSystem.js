@@ -1,4 +1,5 @@
 import React from "react";
+import TextField from "@material-ui/core/TextField";
 
 const NumberSystem = ({
   input,
@@ -12,16 +13,18 @@ const NumberSystem = ({
   };
 
   return (
-    <label style={{ color: valid ? "black" : "red" }}>
-      {capitalize(text)}
-      <input
-        type="text"
+    <div className="test">
+      <TextField
+        error={!valid}
+        label={!valid ? "Invalid" : capitalize(text)}
         name={text}
         value={input}
         onChange={handleOnChange}
         onClick={handleOnClick}
+        fullWidth={true}
+        InputProps={{ style: { fontSize: "30px" } }}
       />
-    </label>
+    </div>
   );
 };
 
