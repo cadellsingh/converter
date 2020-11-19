@@ -45,8 +45,6 @@ const App = () => {
     });
   };
 
-  console.log(clickedOn);
-
   const decimalConversion = (decimal) => {
     setInput({
       ...input,
