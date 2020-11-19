@@ -4,14 +4,16 @@ import HexadecimalCalculation from "./HexadecimalCalculation";
 import DecimalCalculation from "./DecimalCalculation";
 
 const CalculationRow = ({ input }) => {
-  const { decimal, hexadecimal, binary } = input;
+  // only display 1 of the three based on whats being clicked on
+  // so if decimal is being inputted display decimal calculation
+  // decimal calculation will have decimal to binary & decimal to hexadecimal
+  // might have to change back the calculation methods
+  //
 
   return (
-    <div className="container">
-      <DecimalCalculation binary={binary} hexadecimal={hexadecimal} />
-      <BinaryCalculation decimal={decimal} hexadecimal={hexadecimal} />
-      <HexadecimalCalculation decimal={decimal} binary={binary} />
-    </div>
+    // <DecimalCalculation decimal={input.decimal} />
+    <BinaryCalculation binary={input.binary} />
+    // <HexadecimalCalculation hexadecimal={input.hexadecimal} />
   );
 };
 
