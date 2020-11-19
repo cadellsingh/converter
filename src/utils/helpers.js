@@ -28,3 +28,7 @@ export const splitString = (string) => {
   string = string === "" ? " " : string;
   return string.match(/.{1,4}/g);
 };
+
+export const uid = () => {
+  return Date.now().toString(36) + Math.random().toString(36).substr(2);
+};
