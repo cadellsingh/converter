@@ -1,56 +1,56 @@
 import React from "react";
-import { reverseString } from "./utils/helpers";
-import { binaryLetter } from "./utils/helpers";
-import { splitString } from "./utils/helpers";
+import { binaryValue } from "./utils/helpers";
+import { decimalToBinary } from "./utils/hexadecimalToBinary";
 
 // import validation method (maybe)
 // could prob use onFocus to prop to know when to display calc
 // put validation in each calculation method
 
-const BinaryCalculation = ({ binary }) => {
-  binary = reverseString(binary);
+const BinaryCalculation = ({ decimal, hexadecimal }) => {
+  const hexadecimalToBinaryCalc = (hexadecimal) => {
+    return hexadecimal.split("").map((alpha) => {
+      let hex = isNaN(alpha) ? binaryValue(alpha) : alpha;
+      let binary = decimalToBinary(hex);
 
-  const binaryToDecimalCalc = (binary) => {
-    return binary.split("").map((digit, index) => {
-      let num = digit * Math.pow(2, index);
       return (
-        <p key={index}>
-          {digit} * 2 ^ {index}: {num}
+        <p>
+          {alpha}: {binary}
         </p>
       );
     });
   };
 
-  const binaryToHexaCalc = (binary) => {
-    return splitString(binary).map((data, index) => {
-      const binaryValues = [1, 2, 4, 8];
-      let sum = 0;
+  const decimalToBinaryCalc = (decimal) => {
+    let bitNum = 0;
+    let calculations = [];
 
-      data.split("").forEach((digit, index) => {
-        sum += digit === "1" && binaryValues[index];
-      });
+    while (decimal > 0) {
+      let quotient = Math.floor(decimal / 2);
+      let remainder = decimal % 2;
 
-      let hexadecimal = sum <= 9 ? sum : binaryLetter(sum);
-
-      return (
-        <p key={index}>
-          {data}: {hexadecimal}
-        </p>
+      calculations.push(
+        <div>
+          <p>Division by 2: {decimal} / 2</p>
+          <p>Quotient: {quotient}</p>
+          <p>Remainder: {remainder}</p>
+          <p>Bit Number: {bitNum}</p>
+          <p>====</p>
+        </div>
       );
-    });
+
+      bitNum++;
+      decimal = quotient;
+    }
+
+    return calculations;
   };
 
   return (
     <div className="test">
       <div>
-        <h1>binary To dec Calculation</h1>
-        {/*{binaryToDecimalCalc(binary)}*/}
+        <h1>Calculation</h1>
+        {decimalToBinaryCalc(decimal)}
       </div>
-
-      {/*<div className="calculation">*/}
-      {/*  <h1>binary to hexa Calculation</h1>*/}
-      {/*  {binaryToHexaCalc(binary)}*/}
-      {/*</div>*/}
     </div>
   );
 };

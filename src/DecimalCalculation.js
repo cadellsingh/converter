@@ -1,69 +1,45 @@
 import React from "react";
-import { binaryLetter } from "./utils/helpers";
+import { binaryValue, reverseString } from "./utils/helpers";
 
-const DecimalCalculation = ({ decimal }) => {
-  const decimalToBinaryCalc = (decimal) => {
-    let bitNum = 0;
-    let calculations = [];
+// binaryToDecimal
+// hexadecimalToDecimal
 
-    while (decimal > 0) {
-      let quotient = Math.floor(decimal / 2);
-      let remainder = decimal % 2;
+const DecimalCalculation = ({ binary, hexadecimal }) => {
+  binary = reverseString(binary);
 
-      calculations.push(
-        <div>
-          <p>Division by 2: {decimal} / 2</p>
-          <p>Quotient: {quotient}</p>
-          <p>Remainder: {remainder}</p>
-          <p>Bit Number: {bitNum}</p>
-          <p>====</p>
-        </div>
+  const binaryToDecimalCalc = (binary) => {
+    return binary.split("").map((digit, index) => {
+      let num = digit * Math.pow(2, index);
+      return (
+        <p key={index}>
+          {digit} * 2 ^ {index}: {num}
+        </p>
       );
-
-      bitNum++;
-      decimal = quotient;
-    }
-
-    return calculations;
+    });
   };
 
-  const decimalToHexadecimalCalc = (decimal) => {
-    let bitNum = 0;
-    let calculations = [];
+  const hexadecimalToDecimalCalc = (hexadecimal) => {
+    let hexaArray = reverseString(hexadecimal)
+      .split("")
+      .map((alpha) => {
+        return isNaN(alpha) ? binaryValue(alpha) : parseInt(alpha);
+      });
 
-    while (decimal > 0) {
-      let quotient = Math.floor(decimal / 16);
-      let remainder = decimal % 16;
-      let remainderHex = remainder > 9 ? binaryLetter(remainder) : remainder;
-
-      calculations.push(
-        <div>
-          <p>Division by 16: {decimal} / 16</p>
-          <p>Quotient: {quotient}</p>
-          <p>Remainder (decimal): {remainder}</p>
-          <p>Remainder (hexadecimal): {remainderHex}</p>
-          <p>Bit Number: {bitNum}</p>
-          <p>===</p>
-        </div>
+    return hexaArray.map((digit, index) => {
+      let sum = digit * Math.pow(16, index);
+      return (
+        <p>
+          {digit} * 16 ^ {index}: {sum}
+        </p>
       );
-
-      bitNum++;
-      decimal = quotient;
-    }
-
-    return calculations;
+    });
   };
 
   return (
     <div className="test">
       <div>
-        <h1>decimal to binary Calc</h1>
-        {/*{decimalToBinaryCalc(decimal)}*/}
+        <h1>Calculation</h1>
       </div>
-      {/*<div className="calculation">*/}
-      {/*  <h1>decimal to hexadecimal Calc</h1>*/}
-      {/*  {decimalToHexadecimalCalc(decimal)}*/}
-      {/*</div>*/}
     </div>
   );
 };
