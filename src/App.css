@@ -11,9 +11,14 @@
 }
 
 .test {
-    /*background-color: green;*/
     width: 30%;
 }
+
+.center-text {
+    text-align: center;
+}
+
+
 
 /*.grid {*/
 /*    background-color: green;*/
