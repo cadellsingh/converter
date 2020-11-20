@@ -9,6 +9,7 @@ import { binaryToHexadecimal } from "./utils/binaryToHexadecimal";
 import { hexadecimalToDecimal } from "./utils/hexadecimalToDecimal";
 import { hexadecimalToBinary } from "./utils/hexadecimalToBinary";
 import CalculationRow from "./CalculationRow";
+import BinaryCalculation from "./BinaryCalculations";
 
 const App = () => {
   const [input, setInput] = useState({
@@ -22,10 +23,6 @@ const App = () => {
     binary: false,
     hexadecimal: false,
   });
-
-  // const [binaryClickedOn, setBinaryClickedOn] = useState(false);
-  // const [decimalClickedO, setDecimalClickedOn] = useState(false);
-  // const [hexaClickedOn, setHexaClickedOn] = useState(false);
 
   const handleOnChange = (event) => {
     const name = event.target.name;
@@ -80,7 +77,9 @@ const App = () => {
         handleOnClick={handleOnClick}
       />
 
-      <CalculationRow input={input} />
+      {/*possibly dont even need a Calculation Row component*/}
+      {/*<CalculationRow input={input} />*/}
+      <BinaryCalculation binary={input.binary} />
     </div>
   );
 };
