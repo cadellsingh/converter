@@ -7,6 +7,7 @@ import Divider from "@material-ui/core/Divider";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
 
 const BinaryCalculation = ({ binary }) => {
   // bug here -> test = 10101
@@ -29,8 +30,8 @@ const BinaryCalculation = ({ binary }) => {
 
       return (
         <ListItem key={uid()}>
-          <ListItemText>
-            {data} : {hexadecimal}
+          <ListItemText className="center-text">
+            {data} = {hexadecimal}
           </ListItemText>
         </ListItem>
       );
@@ -48,8 +49,10 @@ const BinaryCalculation = ({ binary }) => {
         let num = digit * Math.pow(2, index);
         return (
           <ListItem key={uid()}>
-            <ListItemText>
-              {digit} * 2 ^ {index}: {num}
+            <ListItemText className="center-text">
+              {digit}
+              <span>&#215;</span>2<sup>{index}</sup> = {num}
+              <sub>10</sub>
             </ListItemText>
           </ListItem>
         );
@@ -59,24 +62,29 @@ const BinaryCalculation = ({ binary }) => {
   // could make another component
   //  like calculation and then i'll pass whatever needs to be shown
 
-  // THEY ARE SOME BUGS IN THE BINARY CALC
-  //
-
   return (
     <Grid container justify="center" spacing={9}>
       <Grid item className="test">
-        <List>
-          <ListSubheader>Binary To Decimal</ListSubheader>
-          {binaryToDecimalCalc(binary)}
-          <Divider />
-        </List>
+        <Paper>
+          <List>
+            <ListSubheader className="center-text">
+              Binary To Decimal
+            </ListSubheader>
+            <Divider />
+            {binaryToDecimalCalc(binary)}
+          </List>
+        </Paper>
       </Grid>
       <Grid item className="test">
-        <List>
-          <ListSubheader>Binary To Hexadecimal</ListSubheader>
-          {binaryToHexaCalc(binary)}
-          <Divider />
-        </List>
+        <Paper>
+          <List>
+            <ListSubheader className="list-item">
+              Binary To Hexadecimal
+            </ListSubheader>
+            <Divider />
+            {binaryToHexaCalc(binary)}
+          </List>
+        </Paper>
       </Grid>
     </Grid>
   );

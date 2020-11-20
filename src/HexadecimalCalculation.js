@@ -2,20 +2,28 @@ import React from "react";
 import { binaryValue, uid } from "./utils/helpers";
 import { reverseString } from "./utils/helpers";
 import { decimalToBinary } from "./utils/hexadecimalToBinary";
-
-// hexaToDeci
-// hexaToBinary
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import Divider from "@material-ui/core/Divider";
+import ListItemText from "@material-ui/core/ListItemText";
+import ListSubheader from "@material-ui/core/ListSubheader";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
 
 const HexadecimalCalculation = ({ hexadecimal }) => {
+  // calculation methods return shit with invalid input
+
   const hexadecimalToBinaryCalc = (hexadecimal) => {
     return hexadecimal.split("").map((alpha) => {
       let hex = isNaN(alpha) ? binaryValue(alpha) : alpha;
       let binary = decimalToBinary(hex);
 
       return (
-        <p key={uid()}>
-          {alpha}: {binary}
-        </p>
+        <ListItem key={uid()}>
+          <ListItemText className="center-text">
+            {alpha.toUpperCase()} = {binary}
+          </ListItemText>
+        </ListItem>
       );
     });
   };
@@ -30,24 +38,42 @@ const HexadecimalCalculation = ({ hexadecimal }) => {
     return hexaArray.map((digit, index) => {
       let sum = digit * Math.pow(16, index);
       return (
-        <p key={uid()}>
-          {digit} * 16 ^ {index}: {sum}
-        </p>
+        <ListItem key={uid()}>
+          <ListItemText className="center-text">
+            {digit}
+            <span>&#215;</span>16<sup>{index}</sup> = {sum}
+            <sub>10</sub>
+          </ListItemText>
+        </ListItem>
       );
     });
   };
 
   return (
-    <div className="calculation-container">
-      <div>
-        <h3>hexa to deci</h3>
-        {hexadecimalToDecimalCalc(hexadecimal)}
-      </div>
-      <div>
-        <h3>hexa to binary</h3>
-        {hexadecimalToBinaryCalc(hexadecimal)}
-      </div>
-    </div>
+    <Grid container justify="center" spacing={9}>
+      <Grid item className="test">
+        <Paper>
+          <List>
+            <ListSubheader className="center-text">
+              Hexadecimal To Decimal
+            </ListSubheader>
+            <Divider />
+            {hexadecimalToDecimalCalc(hexadecimal)}
+          </List>
+        </Paper>
+      </Grid>
+      <Grid item className="test">
+        <Paper>
+          <List>
+            <ListSubheader className="center-text">
+              Hexadecimal To Binary
+            </ListSubheader>
+            <Divider />
+            {hexadecimalToBinaryCalc(hexadecimal)}
+          </List>
+        </Paper>
+      </Grid>
+    </Grid>
   );
 };
 

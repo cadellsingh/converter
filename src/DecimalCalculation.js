@@ -8,6 +8,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { withStyles } from "@material-ui/core/styles";
+import { Grid } from "@material-ui/core";
 
 const DecimalCalculation = ({ decimal }) => {
   const decimalToBinaryCalc = (decimal) => {
@@ -19,12 +20,14 @@ const DecimalCalculation = ({ decimal }) => {
       let remainder = decimal % 2;
 
       calculations.push(
-        <TableRow key={uid()}>
-          <TableCell>{decimal} / 2</TableCell>
-          <TableCell>{quotient}</TableCell>
-          <TableCell>{remainder}</TableCell>
-          <TableCell>{bitNum}</TableCell>
-        </TableRow>
+        <StyledTableRow key={uid()}>
+          <TableCell align="center">
+            {decimal} <span>&#x2215;</span> 2
+          </TableCell>
+          <TableCell align="center">{quotient}</TableCell>
+          <TableCell align="center">{remainder}</TableCell>
+          <TableCell align="center">{bitNum}</TableCell>
+        </StyledTableRow>
       );
 
       bitNum++;
@@ -45,11 +48,13 @@ const DecimalCalculation = ({ decimal }) => {
 
       calculations.push(
         <StyledTableRow key={uid()}>
-          <TableCell>{decimal} / 16</TableCell>
-          <TableCell>{quotient}</TableCell>
-          <TableCell>{remainder}</TableCell>
-          <TableCell>{remainderHex}</TableCell>
-          <TableCell> {bitNum}</TableCell>
+          <TableCell align="center">
+            {decimal} <span>&#x2215;</span> 16
+          </TableCell>
+          <TableCell align="center">{quotient}</TableCell>
+          <TableCell align="center">{remainder}</TableCell>
+          <TableCell align="center">{remainderHex}</TableCell>
+          <TableCell align="center">{bitNum}</TableCell>
         </StyledTableRow>
       );
 
@@ -81,41 +86,41 @@ const DecimalCalculation = ({ decimal }) => {
   // could make a table component to handle the table styling
 
   return (
-    <div className="calculation-container">
-      <div>
-        <h3>Calculation</h3>
+    <Grid container justify="center" spacing={9}>
+      <Grid item>
+        <h3 className="center-text">Decimal To Binary</h3>
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Division by 2</TableCell>
-                <TableCell>Quotient</TableCell>
-                <TableCell>Remainder</TableCell>
-                <TableCell>Bit Number</TableCell>
+                <StyledTableCell>Division by 2</StyledTableCell>
+                <StyledTableCell>Quotient</StyledTableCell>
+                <StyledTableCell>Remainder</StyledTableCell>
+                <StyledTableCell>Bit #</StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>{decimalToBinaryCalc(decimal)}</TableBody>
           </Table>
         </TableContainer>
-      </div>
-      <div>
-        <h3>Calculation</h3>
+      </Grid>
+      <Grid item>
+        <h3 className="center-text">Decimal To Hexadecimal</h3>
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
               <TableRow>
                 <StyledTableCell>Division by 16</StyledTableCell>
                 <StyledTableCell>Quotient</StyledTableCell>
-                <StyledTableCell>Remainder (decimal):</StyledTableCell>
-                <StyledTableCell>Remainder (hexadecimal):</StyledTableCell>
-                <StyledTableCell>Bit Number</StyledTableCell>
+                <StyledTableCell>Remainder (D):</StyledTableCell>
+                <StyledTableCell>Remainder (H):</StyledTableCell>
+                <StyledTableCell>Bit #</StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>{decimalToHexadecimalCalc(decimal)}</TableBody>
           </Table>
         </TableContainer>
-      </div>
-    </div>
+      </Grid>
+    </Grid>
   );
 };
 
