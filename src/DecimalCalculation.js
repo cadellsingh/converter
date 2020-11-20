@@ -9,9 +9,6 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { withStyles } from "@material-ui/core/styles";
 
-// decimalToBinary
-// decimaalToHexa
-
 const DecimalCalculation = ({ decimal }) => {
   const decimalToBinaryCalc = (decimal) => {
     let bitNum = 0;
