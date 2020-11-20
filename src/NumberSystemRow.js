@@ -5,38 +5,41 @@ import {
   decimalValidation,
   hexadecimalValidation,
 } from "./utils/validation";
+import Grid from "@material-ui/core/Grid";
 
 const NumberSystemRow = ({ input, handleOnChange, handleOnClick }) => {
   return (
-    <div>
-      <form>
-        <div className="container">
-          <NumberSystem
-            input={input.decimal}
-            text="decimal"
-            handleOnChange={handleOnChange}
-            handleOnClick={handleOnClick}
-            valid={decimalValidation(input.decimal)}
-          />
+    <Grid container justify="center" spacing={9}>
+      <Grid item>
+        <NumberSystem
+          input={input.decimal}
+          text="decimal"
+          handleOnChange={handleOnChange}
+          handleOnClick={handleOnClick}
+          valid={decimalValidation(input.decimal)}
+        />
+      </Grid>
 
-          <NumberSystem
-            input={input.binary}
-            text="binary"
-            handleOnChange={handleOnChange}
-            handleOnClick={handleOnClick}
-            valid={binaryValidation(input.binary)}
-          />
+      <Grid item>
+        <NumberSystem
+          input={input.binary}
+          text="binary"
+          handleOnChange={handleOnChange}
+          handleOnClick={handleOnClick}
+          valid={binaryValidation(input.binary)}
+        />
+      </Grid>
 
-          <NumberSystem
-            input={input.hexadecimal}
-            text="hexadecimal"
-            handleOnChange={handleOnChange}
-            handleOnClick={handleOnClick}
-            valid={hexadecimalValidation(input.hexadecimal)}
-          />
-        </div>
-      </form>
-    </div>
+      <Grid item>
+        <NumberSystem
+          input={input.hexadecimal}
+          text="hexadecimal"
+          handleOnChange={handleOnChange}
+          handleOnClick={handleOnClick}
+          valid={hexadecimalValidation(input.hexadecimal)}
+        />
+      </Grid>
+    </Grid>
   );
 };
 

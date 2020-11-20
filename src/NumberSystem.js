@@ -13,18 +13,16 @@ const NumberSystem = ({
   };
 
   return (
-    <div className="test">
-      <TextField
-        error={!valid}
-        label={!valid ? "Invalid" : capitalize(text)}
-        name={text}
-        value={input}
-        onChange={handleOnChange}
-        onClick={handleOnClick}
-        fullWidth={true}
-        InputProps={{ style: { fontSize: "30px" } }}
-      />
-    </div>
+    <TextField
+      error={!valid}
+      label={!valid ? "Invalid" : capitalize(text)}
+      name={text}
+      value={input}
+      onChange={handleOnChange}
+      onClick={handleOnClick}
+      fullWidth={true}
+      InputProps={{ style: { fontSize: "30px" } }}
+    />
   );
 };
 
