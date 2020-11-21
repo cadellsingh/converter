@@ -90,7 +90,7 @@ const HexadecimalCalculation = ({ hexadecimal }) => {
 
   return (
     <Grid container justify="center" spacing={9}>
-      <Grid item>
+      <Grid item className="test">
         <Paper>
           <List>
             <h2 className="center-text">Hexadecimal To Decimal</h2>
@@ -112,7 +112,7 @@ const HexadecimalCalculation = ({ hexadecimal }) => {
           </List>
         </Paper>
       </Grid>
-      <Grid item>
+      <Grid item className="test">
         <Paper>
           <List>
             <h2 className="center">Hexadecimal To Binary</h2>
