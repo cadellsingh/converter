@@ -3,17 +3,37 @@ import { binaryValue, uid } from "./utils/helpers";
 import { reverseString } from "./utils/helpers";
 import { decimalToBinary } from "./utils/hexadecimalToBinary";
 import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import Divider from "@material-ui/core/Divider";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListSubheader from "@material-ui/core/ListSubheader";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { hexadecimalValidation } from "./utils/validation";
 
-const HexadecimalCalculation = ({ hexadecimal }) => {
-  // calculation methods return shit with invalid input
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import { withStyles } from "@material-ui/core/styles";
 
+const StyledTableCell = withStyles((theme) => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
+const StyledTableRow = withStyles((theme) => ({
+  root: {
+    "&:nth-of-type(odd)": {
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
+}))(TableRow);
+
+const HexadecimalCalculation = ({ hexadecimal }) => {
   const hexadecimalToBinaryCalc = (hexadecimal) => {
     if (!hexadecimalValidation(hexadecimal)) {
       return "";
@@ -24,11 +44,14 @@ const HexadecimalCalculation = ({ hexadecimal }) => {
       let binary = decimalToBinary(hex);
 
       return (
-        <ListItem key={uid()}>
-          <ListItemText className="center-text">
-            {alpha.toUpperCase()} = {binary}
-          </ListItemText>
-        </ListItem>
+        <StyledTableRow key={uid}>
+          <TableCell align="center">
+            ({alpha.toUpperCase()})<sub>16</sub>
+          </TableCell>
+          <TableCell align="center">
+            ({binary})<sub>2</sub>
+          </TableCell>
+        </StyledTableRow>
       );
     });
   };
@@ -38,47 +61,72 @@ const HexadecimalCalculation = ({ hexadecimal }) => {
       return "";
     }
 
-    let hexaArray = reverseString(hexadecimal)
-      .split("")
-      .map((alpha) => {
-        return isNaN(alpha) ? binaryValue(alpha) : parseInt(alpha);
-      });
+    const reversedString = reverseString(hexadecimal);
+
+    let hexaArray = reversedString.split("").map((alpha) => {
+      return isNaN(alpha) ? binaryValue(alpha) : parseInt(alpha);
+    });
 
     return hexaArray.map((digit, index) => {
-      let sum = digit * Math.pow(16, index);
+      let power = digit * Math.pow(16, index);
+      let hex = reversedString.split("")[index];
+
       return (
-        <ListItem key={uid()}>
-          <ListItemText className="center-text">
+        <StyledTableRow key={uid}>
+          <TableCell align="center">{hex.toUpperCase()}</TableCell>
+          <TableCell align="center">{digit}</TableCell>
+          <TableCell align="center">
             {digit}
-            <span>&#215;</span>16<sup>{index}</sup> = {sum}
+            <span>&#215;</span>16<sup>{index}</sup>
+          </TableCell>
+          <TableCell align="right">
+            {power}
             <sub>10</sub>
-          </ListItemText>
-        </ListItem>
+          </TableCell>
+        </StyledTableRow>
       );
     });
   };
 
   return (
     <Grid container justify="center" spacing={9}>
-      <Grid item className="test">
+      <Grid item>
         <Paper>
           <List>
-            <ListSubheader className="center-text">
-              <h2>Hexadecimal To Decimal</h2>
-            </ListSubheader>
-            <Divider />
-            {hexadecimalToDecimalCalc(hexadecimal)}
+            <h2 className="center-text">Hexadecimal To Decimal</h2>
+            <TableContainer component={Paper}>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <StyledTableCell>Hexadecimal</StyledTableCell>
+                    <StyledTableCell>DEC Value</StyledTableCell>
+                    <StyledTableCell>
+                      DEC <span>&#215;</span> 16<sup>n</sup>
+                    </StyledTableCell>
+                    <StyledTableCell>Value</StyledTableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>{hexadecimalToDecimalCalc(hexadecimal)}</TableBody>
+              </Table>
+            </TableContainer>
           </List>
         </Paper>
       </Grid>
-      <Grid item className="test">
+      <Grid item>
         <Paper>
           <List>
-            <ListSubheader className="center-text">
-              <h2>Hexadecimal To Binary</h2>
-            </ListSubheader>
-            <Divider />
-            {hexadecimalToBinaryCalc(hexadecimal)}
+            <h2 className="center">Hexadecimal To Binary</h2>
+            <TableContainer component={Paper}>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <StyledTableCell>Hexadecimal</StyledTableCell>
+                    <StyledTableCell>Binary</StyledTableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>{hexadecimalToBinaryCalc(hexadecimal)}</TableBody>
+              </Table>
+            </TableContainer>
           </List>
         </Paper>
       </Grid>

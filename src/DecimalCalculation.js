@@ -9,6 +9,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { withStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
+import List from "@material-ui/core/List";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -88,37 +89,45 @@ const DecimalCalculation = ({ decimal }) => {
   return (
     <Grid container justify="center" spacing={9}>
       <Grid item>
-        <h3 className="center-text">Decimal To Binary</h3>
-        <TableContainer component={Paper}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <StyledTableCell>Division by 2</StyledTableCell>
-                <StyledTableCell>Quotient</StyledTableCell>
-                <StyledTableCell>Remainder</StyledTableCell>
-                <StyledTableCell>Bit #</StyledTableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>{decimalToBinaryCalc(decimal)}</TableBody>
-          </Table>
-        </TableContainer>
+        <Paper>
+          <List>
+            <h2 className="center-text">Decimal To Binary</h2>
+            <TableContainer component={Paper}>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <StyledTableCell>Division by 2</StyledTableCell>
+                    <StyledTableCell>Quotient</StyledTableCell>
+                    <StyledTableCell>Remainder</StyledTableCell>
+                    <StyledTableCell>Bit #</StyledTableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>{decimalToBinaryCalc(decimal)}</TableBody>
+              </Table>
+            </TableContainer>
+          </List>
+        </Paper>
       </Grid>
       <Grid item>
-        <h3 className="center-text">Decimal To Hexadecimal</h3>
-        <TableContainer component={Paper}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <StyledTableCell>Division by 16</StyledTableCell>
-                <StyledTableCell>Quotient</StyledTableCell>
-                <StyledTableCell>Remainder (D):</StyledTableCell>
-                <StyledTableCell>Remainder (H):</StyledTableCell>
-                <StyledTableCell>Bit #</StyledTableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>{decimalToHexadecimalCalc(decimal)}</TableBody>
-          </Table>
-        </TableContainer>
+        <Paper>
+          <List>
+            <h2 className="center-text">Decimal To Hexadecimal</h2>
+            <TableContainer component={Paper}>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <StyledTableCell>Division by 16</StyledTableCell>
+                    <StyledTableCell>Quotient</StyledTableCell>
+                    <StyledTableCell>Remainder (D):</StyledTableCell>
+                    <StyledTableCell>Remainder (H):</StyledTableCell>
+                    <StyledTableCell>Bit #</StyledTableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>{decimalToHexadecimalCalc(decimal)}</TableBody>
+              </Table>
+            </TableContainer>
+          </List>
+        </Paper>
       </Grid>
     </Grid>
   );
