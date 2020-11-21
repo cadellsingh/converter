@@ -10,28 +10,27 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 
 const BinaryCalculation = ({ binary }) => {
-  // bug here -> test = 10101
   const binaryToHexaCalc = (binary) => {
     if (!binaryValidation(binary) || binary === "") {
       return "";
     }
 
-    return splitString(binary).map((data) => {
+    let binarySplit = splitString(reverseString(binary));
+
+    return binarySplit.map((data) => {
       const binaryValues = [1, 2, 4, 8];
       let sum = 0;
 
-      reverseString(data)
-        .split("")
-        .forEach((digit, index) => {
-          sum += digit === "1" && binaryValues[index];
-        });
+      data.split("").forEach((digit, index) => {
+        sum += digit === "1" && binaryValues[index];
+      });
 
       let hexadecimal = sum <= 9 ? sum : binaryLetter(sum);
 
       return (
         <ListItem key={uid()}>
           <ListItemText className="center-text">
-            {data} = {hexadecimal}
+            {reverseString(data)} = {hexadecimal}
           </ListItemText>
         </ListItem>
       );
@@ -68,7 +67,7 @@ const BinaryCalculation = ({ binary }) => {
         <Paper>
           <List>
             <ListSubheader className="center-text">
-              Binary To Decimal
+              <h2>Binary To Decimal</h2>
             </ListSubheader>
             <Divider />
             {binaryToDecimalCalc(binary)}
@@ -78,8 +77,8 @@ const BinaryCalculation = ({ binary }) => {
       <Grid item className="test">
         <Paper>
           <List>
-            <ListSubheader className="list-item">
-              Binary To Hexadecimal
+            <ListSubheader className="center-text">
+              <h2>Binary To Hexadecimal</h2>
             </ListSubheader>
             <Divider />
             {binaryToHexaCalc(binary)}

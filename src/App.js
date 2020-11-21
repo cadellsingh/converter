@@ -77,6 +77,8 @@ const App = () => {
         handleOnClick={handleOnClick}
       />
 
+      {/*<DecimalCalculation decimal={input.decimal} />*/}
+      {/*<BinaryCalculation binary={input.binary} />*/}
       <HexadecimalCalculation hexadecimal={input.hexadecimal} />
     </div>
   );

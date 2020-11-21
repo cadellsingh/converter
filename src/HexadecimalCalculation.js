@@ -9,11 +9,16 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
+import { hexadecimalValidation } from "./utils/validation";
 
 const HexadecimalCalculation = ({ hexadecimal }) => {
   // calculation methods return shit with invalid input
 
   const hexadecimalToBinaryCalc = (hexadecimal) => {
+    if (!hexadecimalValidation(hexadecimal)) {
+      return "";
+    }
+
     return hexadecimal.split("").map((alpha) => {
       let hex = isNaN(alpha) ? binaryValue(alpha) : alpha;
       let binary = decimalToBinary(hex);
@@ -29,6 +34,10 @@ const HexadecimalCalculation = ({ hexadecimal }) => {
   };
 
   const hexadecimalToDecimalCalc = (hexadecimal) => {
+    if (!hexadecimalValidation(hexadecimal)) {
+      return "";
+    }
+
     let hexaArray = reverseString(hexadecimal)
       .split("")
       .map((alpha) => {
@@ -55,7 +64,7 @@ const HexadecimalCalculation = ({ hexadecimal }) => {
         <Paper>
           <List>
             <ListSubheader className="center-text">
-              Hexadecimal To Decimal
+              <h2>Hexadecimal To Decimal</h2>
             </ListSubheader>
             <Divider />
             {hexadecimalToDecimalCalc(hexadecimal)}
@@ -66,7 +75,7 @@ const HexadecimalCalculation = ({ hexadecimal }) => {
         <Paper>
           <List>
             <ListSubheader className="center-text">
-              Hexadecimal To Binary
+              <h2>Hexadecimal To Binary</h2>
             </ListSubheader>
             <Divider />
             {hexadecimalToBinaryCalc(hexadecimal)}
