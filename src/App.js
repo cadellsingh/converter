@@ -78,8 +78,8 @@ const App = () => {
       />
 
       {/*<DecimalCalculation decimal={input.decimal} />*/}
-      {/*<BinaryCalculation binary={input.binary} />*/}
-      <HexadecimalCalculation hexadecimal={input.hexadecimal} />
+      <BinaryCalculation binary={input.binary} />
+      {/*<HexadecimalCalculation hexadecimal={input.hexadecimal} />*/}
     </div>
   );
 };

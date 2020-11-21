@@ -18,13 +18,10 @@
     text-align: center;
 }
 
+.blah {
+    /*background: green;*/
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
 
 
-/*.grid {*/
-/*    background-color: green;*/
-/*}*/
-
-/*.list {*/
-/*    background-color: yellow;*/
-/*    width: 30%;*/
-/*}*/
