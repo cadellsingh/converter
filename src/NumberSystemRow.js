@@ -9,7 +9,7 @@ import Grid from "@material-ui/core/Grid";
 
 const NumberSystemRow = ({ input, handleOnChange, handleOnClick }) => {
   return (
-    <Grid container justify="center" spacing={9}>
+    <Grid container justify="center" spacing={9} className="blah">
       <Grid item>
         <NumberSystem
           input={input.decimal}

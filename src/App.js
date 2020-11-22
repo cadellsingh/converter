@@ -10,6 +10,7 @@ import { hexadecimalToDecimal } from "./utils/hexadecimalToDecimal";
 import { hexadecimalToBinary } from "./utils/hexadecimalToBinary";
 import BinaryCalculation from "./BinaryCalculations";
 import HexadecimalCalculation from "./HexadecimalCalculation";
+import DisplayCalculation from "./DisplayCalculation";
 
 const App = () => {
   const [input, setInput] = useState({
@@ -77,8 +78,8 @@ const App = () => {
         handleOnClick={handleOnClick}
       />
 
-      {/*<DecimalCalculation decimal={input.decimal} />*/}
-      <BinaryCalculation binary={input.binary} />
+      <DecimalCalculation decimal={input.decimal} />
+      {/*<BinaryCalculation binary={input.binary} />*/}
       {/*<HexadecimalCalculation hexadecimal={input.hexadecimal} />*/}
     </div>
   );
