@@ -1,16 +1,11 @@
 import React from "react";
 import { binaryLetter, reverseString, splitString, uid } from "./utils/helpers";
 import { binaryValidation } from "./utils/validation";
-import List from "@material-ui/core/List";
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import { withStyles } from "@material-ui/core/styles";
+import DisplayCalculation from "./DisplayCalculation";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -87,50 +82,36 @@ const BinaryCalculation = ({ binary }) => {
       });
   };
 
-  // could make another component
-  //  like calculation and then i'll pass whatever needs to be shown
+  const binaryToDecTableCells = (
+    <TableRow>
+      <StyledTableCell>Binary</StyledTableCell>
+      <StyledTableCell>
+        Binary <span>&#215;</span> 2<sup>n</sup>
+      </StyledTableCell>
+      <StyledTableCell>Value</StyledTableCell>
+    </TableRow>
+  );
+
+  const binaryToHexTableCells = (
+    <TableRow>
+      <StyledTableCell>Binary</StyledTableCell>
+      <StyledTableCell>Hexadecimal</StyledTableCell>
+    </TableRow>
+  );
 
   return (
     <Grid container justify="center" spacing={9}>
-      <Grid item className="test">
-        <Paper>
-          <List>
-            <h2 className="center-text">Binary To Decimal</h2>
-            <TableContainer component={Paper}>
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    <StyledTableCell>Binary</StyledTableCell>
-                    <StyledTableCell>
-                      Binary <span>&#215;</span> 2<sup>n</sup>
-                    </StyledTableCell>
-                    <StyledTableCell>Value</StyledTableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>{binaryToDecimalCalc(binary)}</TableBody>
-              </Table>
-            </TableContainer>
-          </List>
-        </Paper>
-      </Grid>
-      <Grid item className="test">
-        <Paper>
-          <List>
-            <h2 className="center-text">Binary to Hexadecimal</h2>
-            <TableContainer component={Paper}>
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    <StyledTableCell>Binary</StyledTableCell>
-                    <StyledTableCell>Hexadecimal</StyledTableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>{binaryToHexaCalc(binary)}</TableBody>
-              </Table>
-            </TableContainer>
-          </List>
-        </Paper>
-      </Grid>
+      <DisplayCalculation
+        text="Binary To Decimal"
+        styledTableCells={binaryToDecTableCells}
+        calculation={binaryToDecimalCalc(binary)}
+      />
+
+      <DisplayCalculation
+        text="Binary to Hexadecimal"
+        styledTableCells={binaryToHexTableCells}
+        calculation={binaryToHexaCalc(binary)}
+      />
     </Grid>
   );
 };

@@ -2,19 +2,14 @@ import React from "react";
 import { binaryValue, uid } from "./utils/helpers";
 import { reverseString } from "./utils/helpers";
 import { decimalToBinary } from "./utils/hexadecimalToBinary";
-import List from "@material-ui/core/List";
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 import { hexadecimalValidation } from "./utils/validation";
-
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import { withStyles } from "@material-ui/core/styles";
+import DisplayCalculation from "./DisplayCalculation";
 
+// could export these functions
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -88,48 +83,37 @@ const HexadecimalCalculation = ({ hexadecimal }) => {
     });
   };
 
+  const hexaToDecTableCells = (
+    <TableRow>
+      <StyledTableCell>Hexadecimal</StyledTableCell>
+      <StyledTableCell>DEC Value</StyledTableCell>
+      <StyledTableCell>
+        DEC <span>&#215;</span> 16<sup>n</sup>
+      </StyledTableCell>
+      <StyledTableCell>Value</StyledTableCell>
+    </TableRow>
+  );
+
+  const hexaToBinaryTableCells = (
+    <TableRow>
+      <StyledTableCell>Hexadecimal</StyledTableCell>
+      <StyledTableCell>Binary</StyledTableCell>
+    </TableRow>
+  );
+
   return (
     <Grid container justify="center" spacing={9}>
-      <Grid item className="test">
-        <Paper>
-          <List>
-            <h2 className="center-text">Hexadecimal To Decimal</h2>
-            <TableContainer component={Paper}>
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    <StyledTableCell>Hexadecimal</StyledTableCell>
-                    <StyledTableCell>DEC Value</StyledTableCell>
-                    <StyledTableCell>
-                      DEC <span>&#215;</span> 16<sup>n</sup>
-                    </StyledTableCell>
-                    <StyledTableCell>Value</StyledTableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>{hexadecimalToDecimalCalc(hexadecimal)}</TableBody>
-              </Table>
-            </TableContainer>
-          </List>
-        </Paper>
-      </Grid>
-      <Grid item className="test">
-        <Paper>
-          <List>
-            <h2 className="center">Hexadecimal To Binary</h2>
-            <TableContainer component={Paper}>
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    <StyledTableCell>Hexadecimal</StyledTableCell>
-                    <StyledTableCell>Binary</StyledTableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>{hexadecimalToBinaryCalc(hexadecimal)}</TableBody>
-              </Table>
-            </TableContainer>
-          </List>
-        </Paper>
-      </Grid>
+      <DisplayCalculation
+        text="Hexadecimal To Decimal"
+        styledTableCells={hexaToDecTableCells}
+        calculation={hexadecimalToDecimalCalc(hexadecimal)}
+      />
+
+      <DisplayCalculation
+        text="Hexadecimal To Binary"
+        styledTableCells={hexaToBinaryTableCells}
+        calculation={hexadecimalToBinaryCalc(hexadecimal)}
+      />
     </Grid>
   );
 };
