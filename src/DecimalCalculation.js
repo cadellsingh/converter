@@ -2,27 +2,9 @@ import React from "react";
 import { binaryLetter, uid } from "./utils/helpers";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
-import { withStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
 import DisplayCalculation from "./DisplayCalculation";
-
-const StyledTableCell = withStyles((theme) => ({
-  head: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-  },
-  body: {
-    fontSize: 14,
-  },
-}))(TableCell);
-
-const StyledTableRow = withStyles((theme) => ({
-  root: {
-    "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.action.hover,
-    },
-  },
-}))(TableRow);
+import { StyledTableCell, StyledTableRow } from "./utils/styling";
 
 const DecimalCalculation = ({ decimal }) => {
   const decimalToBinaryCalc = (decimal) => {
