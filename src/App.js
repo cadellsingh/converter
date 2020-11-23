@@ -1,6 +1,5 @@
 import "./App.css";
 import React, { useState } from "react";
-import DecimalCalculation from "./DecimalCalculation";
 import NumberSystemRow from "./NumberSystemRow";
 import { decimalToBinary } from "./utils/decimalToBinary";
 import { decimalToHexadecimal } from "./utils/decimalToHexadecimal";
@@ -8,9 +7,9 @@ import { binaryToDecimal } from "./utils/binaryToDecimal";
 import { binaryToHexadecimal } from "./utils/binaryToHexadecimal";
 import { hexadecimalToDecimal } from "./utils/hexadecimalToDecimal";
 import { hexadecimalToBinary } from "./utils/hexadecimalToBinary";
+import DecimalCalculation from "./DecimalCalculation";
 import BinaryCalculation from "./BinaryCalculations";
 import HexadecimalCalculation from "./HexadecimalCalculation";
-import DisplayCalculation from "./DisplayCalculation";
 
 const App = () => {
   const [input, setInput] = useState({
@@ -71,16 +70,16 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="main">
       <NumberSystemRow
         input={input}
         handleOnChange={handleOnChange}
         handleOnClick={handleOnClick}
       />
 
-      <DecimalCalculation decimal={input.decimal} />
+      {/*<DecimalCalculation decimal={input.decimal} />*/}
       {/*<BinaryCalculation binary={input.binary} />*/}
-      {/*<HexadecimalCalculation hexadecimal={input.hexadecimal} />*/}
+      <HexadecimalCalculation hexadecimal={input.hexadecimal} />
     </div>
   );
 };
