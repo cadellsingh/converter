@@ -1,27 +1,14 @@
-.container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-items: center;
-}
-
-.calculation-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
-}
-
-.test {
+.calculation {
     width: 40%;
 }
 
-.center-text {
-    text-align: center;
-}
-
-.blah {
-    /*background: green;*/
+.number-system-row {
     padding-top: 50px;
     padding-bottom: 20px;
+}
+
+.number-system {
+    width: 30%;
 }
 
 
