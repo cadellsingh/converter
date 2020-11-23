@@ -9,8 +9,8 @@ import Grid from "@material-ui/core/Grid";
 
 const NumberSystemRow = ({ input, handleOnChange, handleOnClick }) => {
   return (
-    <Grid container justify="center" spacing={9} className="blah">
-      <Grid item>
+    <Grid container justify="center" spacing={9} className="number-system-row">
+      <Grid item className="number-system">
         <NumberSystem
           input={input.decimal}
           text="decimal"
@@ -20,7 +20,7 @@ const NumberSystemRow = ({ input, handleOnChange, handleOnClick }) => {
         />
       </Grid>
 
-      <Grid item>
+      <Grid item className="number-system">
         <NumberSystem
           input={input.binary}
           text="binary"
@@ -30,7 +30,7 @@ const NumberSystemRow = ({ input, handleOnChange, handleOnClick }) => {
         />
       </Grid>
 
-      <Grid item>
+      <Grid item className="number-system">
         <NumberSystem
           input={input.hexadecimal}
           text="hexadecimal"

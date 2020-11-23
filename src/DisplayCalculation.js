@@ -7,11 +7,9 @@ import TableBody from "@material-ui/core/TableBody";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 
-// center table rows
-
 const DisplayCalculation = ({ text, styledTableCells, calculation }) => {
   return (
-    <Grid item className="test">
+    <Grid item className="calculation">
       <Paper>
         <List>
           <h2 className="center-text">{text}</h2>
