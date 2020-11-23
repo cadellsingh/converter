@@ -2,15 +2,18 @@ import React from "react";
 import { binaryLetter, reverseString, splitString, uid } from "./utils/helpers";
 import { binaryValidation } from "./utils/validation";
 import Grid from "@material-ui/core/Grid";
-import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import DisplayCalculation from "./DisplayCalculation";
-import { StyledTableCell, StyledTableRow } from "./utils/styling";
+import {
+  StyledTableCell,
+  StyledTableRow,
+  TableCellCalculation,
+} from "./utils/styling";
 
 const BinaryCalculation = ({ binary }) => {
   const binaryToHexaCalc = (binary) => {
     if (!binaryValidation(binary) || binary === "") {
-      return "";
+      return null;
     }
 
     let binarySplit = splitString(reverseString(binary));
@@ -27,12 +30,12 @@ const BinaryCalculation = ({ binary }) => {
 
       return (
         <StyledTableRow key={uid()}>
-          <TableCell>
+          <TableCellCalculation>
             ({reverseString(data)})<sub>2</sub>
-          </TableCell>
-          <TableCell>
+          </TableCellCalculation>
+          <TableCellCalculation>
             ({hexadecimal})<sub>16</sub>
-          </TableCell>
+          </TableCellCalculation>
         </StyledTableRow>
       );
     });
@@ -40,7 +43,7 @@ const BinaryCalculation = ({ binary }) => {
 
   const binaryToDecimalCalc = (binary) => {
     if (!binaryValidation(binary)) {
-      return "";
+      return null;
     }
 
     return reverseString(binary)
@@ -50,15 +53,15 @@ const BinaryCalculation = ({ binary }) => {
 
         return (
           <StyledTableRow key={uid()}>
-            <TableCell align="center">{digit}</TableCell>
-            <TableCell align="center">
+            <TableCellCalculation>{digit}</TableCellCalculation>
+            <TableCellCalculation>
               {digit}
               <span>&#215;</span>2<sup>{index}</sup>
-            </TableCell>
-            <TableCell align="center">
+            </TableCellCalculation>
+            <TableCellCalculation>
               {num}
               <sub>10</sub>
-            </TableCell>
+            </TableCellCalculation>
           </StyledTableRow>
         );
       });

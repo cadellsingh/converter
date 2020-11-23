@@ -1,10 +1,13 @@
 import React from "react";
 import { binaryLetter, uid } from "./utils/helpers";
-import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import { Grid } from "@material-ui/core";
 import DisplayCalculation from "./DisplayCalculation";
-import { StyledTableCell, StyledTableRow } from "./utils/styling";
+import {
+  StyledTableCell,
+  StyledTableRow,
+  TableCellCalculation,
+} from "./utils/styling";
 
 const DecimalCalculation = ({ decimal }) => {
   const decimalToBinaryCalc = (decimal) => {
@@ -17,12 +20,12 @@ const DecimalCalculation = ({ decimal }) => {
 
       calculations.push(
         <StyledTableRow key={uid()}>
-          <TableCell align="center">
+          <TableCellCalculation>
             {decimal} <span>&#x2215;</span> 2
-          </TableCell>
-          <TableCell align="center">{quotient}</TableCell>
-          <TableCell align="center">{remainder}</TableCell>
-          <TableCell align="center">{bitNum}</TableCell>
+          </TableCellCalculation>
+          <TableCellCalculation>{quotient}</TableCellCalculation>
+          <TableCellCalculation>{remainder}</TableCellCalculation>
+          <TableCellCalculation>{bitNum}</TableCellCalculation>
         </StyledTableRow>
       );
 
@@ -44,13 +47,14 @@ const DecimalCalculation = ({ decimal }) => {
 
       calculations.push(
         <StyledTableRow key={uid()}>
-          <TableCell align="center">
-            {decimal} <span>&#x2215;</span> 16
-          </TableCell>
-          <TableCell align="center">{quotient}</TableCell>
-          <TableCell align="center">{remainder}</TableCell>
-          <TableCell align="center">{remainderHex}</TableCell>
-          <TableCell align="center">{bitNum}</TableCell>
+          <TableCellCalculation>
+            {decimal}
+            <span>&#x2215;</span>16
+          </TableCellCalculation>
+          <TableCellCalculation>{quotient}</TableCellCalculation>
+          <TableCellCalculation>{remainder}</TableCellCalculation>
+          <TableCellCalculation>{remainderHex}</TableCellCalculation>
+          <TableCellCalculation>{bitNum}</TableCellCalculation>
         </StyledTableRow>
       );
 

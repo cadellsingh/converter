@@ -4,15 +4,18 @@ import { reverseString } from "./utils/helpers";
 import { decimalToBinary } from "./utils/hexadecimalToBinary";
 import Grid from "@material-ui/core/Grid";
 import { hexadecimalValidation } from "./utils/validation";
-import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import DisplayCalculation from "./DisplayCalculation";
-import { StyledTableCell, StyledTableRow } from "./utils/styling";
+import {
+  StyledTableCell,
+  StyledTableRow,
+  TableCellCalculation,
+} from "./utils/styling";
 
 const HexadecimalCalculation = ({ hexadecimal }) => {
   const hexadecimalToBinaryCalc = (hexadecimal) => {
     if (!hexadecimalValidation(hexadecimal)) {
-      return "";
+      return null;
     }
 
     return hexadecimal.split("").map((alpha) => {
@@ -20,13 +23,13 @@ const HexadecimalCalculation = ({ hexadecimal }) => {
       let binary = decimalToBinary(hex);
 
       return (
-        <StyledTableRow key={uid}>
-          <TableCell align="center">
+        <StyledTableRow key={uid()}>
+          <TableCellCalculation>
             ({alpha.toUpperCase()})<sub>16</sub>
-          </TableCell>
-          <TableCell align="center">
+          </TableCellCalculation>
+          <TableCellCalculation>
             ({binary})<sub>2</sub>
-          </TableCell>
+          </TableCellCalculation>
         </StyledTableRow>
       );
     });
@@ -34,7 +37,7 @@ const HexadecimalCalculation = ({ hexadecimal }) => {
 
   const hexadecimalToDecimalCalc = (hexadecimal) => {
     if (!hexadecimalValidation(hexadecimal)) {
-      return "";
+      return null;
     }
 
     const reversedString = reverseString(hexadecimal);
@@ -48,17 +51,17 @@ const HexadecimalCalculation = ({ hexadecimal }) => {
       let hex = reversedString.split("")[index];
 
       return (
-        <StyledTableRow key={uid}>
-          <TableCell align="center">{hex.toUpperCase()}</TableCell>
-          <TableCell align="center">{digit}</TableCell>
-          <TableCell align="center">
+        <StyledTableRow key={uid()}>
+          <TableCellCalculation>{hex.toUpperCase()}</TableCellCalculation>
+          <TableCellCalculation>{digit}</TableCellCalculation>
+          <TableCellCalculation>
             {digit}
             <span>&#215;</span>16<sup>{index}</sup>
-          </TableCell>
-          <TableCell align="right">
+          </TableCellCalculation>
+          <TableCellCalculation>
             {power}
             <sub>10</sub>
-          </TableCell>
+          </TableCellCalculation>
         </StyledTableRow>
       );
     });
