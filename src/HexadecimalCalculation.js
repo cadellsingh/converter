@@ -2,7 +2,6 @@ import React from "react";
 import { binaryValue, uid } from "./utils/helpers";
 import { reverseString } from "./utils/helpers";
 import { decimalToBinary } from "./utils/hexadecimalToBinary";
-import Grid from "@material-ui/core/Grid";
 import { hexadecimalValidation } from "./utils/validation";
 import TableRow from "@material-ui/core/TableRow";
 import DisplayCalculation from "./DisplayCalculation";
@@ -86,7 +85,7 @@ const HexadecimalCalculation = ({ hexadecimal }) => {
   );
 
   return (
-    <Grid container justify="center" spacing={9}>
+    <div className="calculation-grid">
       <DisplayCalculation
         text="Hexadecimal To Decimal"
         styledTableCells={hexaToDecTableCells}
@@ -98,7 +97,7 @@ const HexadecimalCalculation = ({ hexadecimal }) => {
         styledTableCells={hexaToBinaryTableCells}
         calculation={hexadecimalToBinaryCalc(hexadecimal)}
       />
-    </Grid>
+    </div>
   );
 };
 

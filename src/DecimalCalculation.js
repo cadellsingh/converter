@@ -1,7 +1,6 @@
 import React from "react";
 import { binaryLetter, uid } from "./utils/helpers";
 import TableRow from "@material-ui/core/TableRow";
-import { Grid } from "@material-ui/core";
 import DisplayCalculation from "./DisplayCalculation";
 import {
   StyledTableCell,
@@ -85,7 +84,8 @@ const DecimalCalculation = ({ decimal }) => {
   );
 
   return (
-    <Grid container justify="center" spacing={9}>
+    // will be displaying one of these
+    <div className="calculation-grid">
       <DisplayCalculation
         text="Decimal To Binary"
         styledTableCells={decimalToBinaryTableCells}
@@ -97,7 +97,7 @@ const DecimalCalculation = ({ decimal }) => {
         styledTableCells={decimalToHexTableCells}
         calculation={decimalToHexadecimalCalc(decimal)}
       />
-    </Grid>
+    </div>
   );
 };
 

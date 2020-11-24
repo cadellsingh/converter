@@ -8,7 +8,6 @@ import {
 
 const NumberSystemRow = ({ input, handleOnChange, handleOnClick }) => {
   return (
-    // adjust spacing based on mobile
     <div className="number-system-grid">
       <div className="grid-item">
         <NumberSystem

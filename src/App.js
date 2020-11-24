@@ -70,7 +70,7 @@ const App = () => {
   };
 
   return (
-    <div className="main">
+    <div>
       <NumberSystemRow
         input={input}
         handleOnChange={handleOnChange}
@@ -78,7 +78,7 @@ const App = () => {
       />
 
       {/*<DecimalCalculation decimal={input.decimal} />*/}
-      <BinaryCalculation binary={input.binary} />
+      {/*<BinaryCalculation binary={input.binary} />*/}
       {/*<HexadecimalCalculation hexadecimal={input.hexadecimal} />*/}
     </div>
   );

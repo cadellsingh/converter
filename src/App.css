@@ -1,18 +1,29 @@
-.calculation {
-    width: 40%;
+html {
+    background-color: #032535;
 }
 
 .center-text {
     text-align: center;
+    color: #ffb515;
 }
 
 .number-system-grid {
     display: grid;
-    margin: 0 auto;
     justify-items: center;
+    margin-top: 40px;
 }
 
 .grid-item {
+    width: 70%;
+}
+
+.calculation-grid {
+    display: grid;
+    justify-items: center;
+    margin-top: 40px;
+}
+
+.calculation-item {
     width: 70%;
 }
 
@@ -20,6 +31,14 @@
     .number-system-grid {
         grid-template-columns: repeat(3, 1fr);
         margin: 40px 0;
+    }
+
+    .calculation-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .calculation-item {
+        width: 80%;
     }
 
     .grid-item {
