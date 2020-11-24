@@ -2,13 +2,27 @@
     width: 40%;
 }
 
-.number-system-row {
-    padding-top: 50px;
-    padding-bottom: 20px;
+.center-text {
+    text-align: center;
 }
 
-.number-system {
-    width: 30%;
+.number-system-grid {
+    display: grid;
+    margin: 0 auto;
+    justify-items: center;
 }
 
+.grid-item {
+    width: 70%;
+}
 
+@media (min-width: 800px) {
+    .number-system-grid {
+        grid-template-columns: repeat(3, 1fr);
+        margin: 40px 0;
+    }
+
+    .grid-item {
+        width: 80%;
+    }
+}

@@ -5,12 +5,12 @@ import {
   decimalValidation,
   hexadecimalValidation,
 } from "./utils/validation";
-import Grid from "@material-ui/core/Grid";
 
 const NumberSystemRow = ({ input, handleOnChange, handleOnClick }) => {
   return (
-    <Grid container justify="center" spacing={9} className="number-system-row">
-      <Grid item className="number-system">
+    // adjust spacing based on mobile
+    <div className="number-system-grid">
+      <div className="grid-item">
         <NumberSystem
           input={input.decimal}
           text="decimal"
@@ -18,9 +18,9 @@ const NumberSystemRow = ({ input, handleOnChange, handleOnClick }) => {
           handleOnClick={handleOnClick}
           valid={decimalValidation(input.decimal)}
         />
-      </Grid>
+      </div>
 
-      <Grid item className="number-system">
+      <div className="grid-item">
         <NumberSystem
           input={input.binary}
           text="binary"
@@ -28,9 +28,9 @@ const NumberSystemRow = ({ input, handleOnChange, handleOnClick }) => {
           handleOnClick={handleOnClick}
           valid={binaryValidation(input.binary)}
         />
-      </Grid>
+      </div>
 
-      <Grid item className="number-system">
+      <div className="grid-item">
         <NumberSystem
           input={input.hexadecimal}
           text="hexadecimal"
@@ -38,8 +38,8 @@ const NumberSystemRow = ({ input, handleOnChange, handleOnClick }) => {
           handleOnClick={handleOnClick}
           valid={hexadecimalValidation(input.hexadecimal)}
         />
-      </Grid>
-    </Grid>
+      </div>
+    </div>
   );
 };
 
