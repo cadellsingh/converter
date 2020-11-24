@@ -40,12 +40,19 @@ const NumberSystem = ({
   handleOnChange,
   valid,
   handleOnClick,
+  clickedOn,
 }) => {
   const capitalize = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
+  const displayButton = () => {
+    return !clickedOn ? <button>Show Steps</button> : null;
+  };
+
   const classes = useStyles();
+
+  // prob put validation in here
 
   return (
     <div>
@@ -60,7 +67,7 @@ const NumberSystem = ({
         className={classes.root}
       />
 
-      <button>Show steps</button>
+      {displayButton()}
     </div>
   );
 };

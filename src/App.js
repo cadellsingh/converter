@@ -19,9 +19,9 @@ const App = () => {
   });
 
   const [clickedOn, setClickedOn] = useState({
-    decimal: false,
-    binary: false,
-    hexadecimal: false,
+    decimal: true,
+    binary: true,
+    hexadecimal: true,
   });
 
   const handleOnChange = (event) => {
@@ -38,9 +38,14 @@ const App = () => {
 
     setClickedOn({
       ...clickedOn,
-      [name]: !clickedOn,
+      decimal: false,
+      binary: false,
+      hexadecimal: false,
+      [name]: true,
     });
   };
+
+  console.log(clickedOn);
 
   const decimalConversion = (decimal) => {
     setInput({
@@ -69,12 +74,16 @@ const App = () => {
     });
   };
 
+  // if decimal is clicked on
+  // show "show steps" for binary & hexadecimal
+
   return (
     <div>
       <NumberSystemRow
         input={input}
         handleOnChange={handleOnChange}
         handleOnClick={handleOnClick}
+        clickedOn={clickedOn}
       />
 
       {/*<DecimalCalculation decimal={input.decimal} />*/}
