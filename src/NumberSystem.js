@@ -9,7 +9,7 @@ const NumberSystem = ({
   handleOnChange,
   valid,
   handleOnClick,
-  clickedOn,
+  displaySteps,
   handleOnButtonClick,
 }) => {
   const capitalize = (string) => {
@@ -17,8 +17,6 @@ const NumberSystem = ({
   };
 
   const classes = TextfieldStyling();
-
-  // prob put validation in here
 
   return (
     <div>
@@ -33,9 +31,11 @@ const NumberSystem = ({
         className={classes.root}
       />
 
+      {/*can send valid here */}
+      {/*if valid => show steps*/}
       <Button
         text={text}
-        clickedOn={clickedOn}
+        displaySteps={displaySteps}
         handleOnButtonClick={handleOnButtonClick}
       />
     </div>

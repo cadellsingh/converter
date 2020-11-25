@@ -1,9 +1,9 @@
 import React from "react";
 
-const Button = ({ text, clickedOn, handleOnButtonClick }) => {
+const Button = ({ text, displaySteps, handleOnButtonClick }) => {
   const displayButton = () => {
     return (
-      !clickedOn && (
+      displaySteps && (
         <button name={text} onClick={handleOnButtonClick}>
           Show Steps
         </button>
