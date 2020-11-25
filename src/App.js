@@ -16,7 +16,7 @@ const App = () => {
     hexadecimal: "",
   });
 
-  const [clickedOn, setClickedOn] = useState({
+  const [displayShowStepsButton, setDisplayShowStepsButton] = useState({
     decimal: false,
     binary: false,
     hexadecimal: false,
@@ -36,12 +36,12 @@ const App = () => {
   const handleOnClick = (event) => {
     const name = event.target.name;
 
-    setClickedOn({
-      ...clickedOn,
-      decimal: false,
-      binary: false,
-      hexadecimal: false,
-      [name]: true,
+    setDisplayShowStepsButton({
+      ...displayShowStepsButton,
+      decimal: true,
+      binary: true,
+      hexadecimal: true,
+      [name]: false,
     });
   };
 
@@ -84,13 +84,13 @@ const App = () => {
         input={input}
         handleOnChange={handleOnChange}
         handleOnClick={handleOnClick}
-        clickedOn={clickedOn}
+        displaySteps={displayShowStepsButton}
         handleOnButtonClick={handleOnButtonClick}
       />
 
       <Calculations
         showStepsFor={showStepsFor}
-        clickedOn={clickedOn}
+        displaySteps={displayShowStepsButton}
         input={input}
       />
     </div>
