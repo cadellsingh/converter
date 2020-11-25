@@ -9,7 +9,6 @@ import TableHead from "@material-ui/core/TableHead";
 const DisplayCalculation = ({ text, styledTableCells, calculation }) => {
   return (
     <div className="calculation-item">
-      {/*<Paper>*/}
       <List>
         <h2 className="center-text">{text}</h2>
         <TableContainer component={Paper}>
@@ -19,7 +18,6 @@ const DisplayCalculation = ({ text, styledTableCells, calculation }) => {
           </Table>
         </TableContainer>
       </List>
-      {/*</Paper>*/}
     </div>
   );
 };

@@ -1,38 +1,7 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles({
-  root: {
-    "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-      borderColor: "#ffb515",
-    },
-    "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-      borderColor: "#ffb515",
-    },
-    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-      borderColor: "#ff5700",
-    },
-    "& .MuiOutlinedInput-input": {
-      color: "#ffb515",
-    },
-    "&:hover .MuiOutlinedInput-input": {
-      color: "#ffb515",
-    },
-    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input": {
-      color: "#ff5700",
-    },
-    "& .MuiInputLabel-outlined": {
-      color: "#ffb515",
-    },
-    "&:hover .MuiInputLabel-outlined": {
-      color: "#ffb515",
-    },
-    "& .MuiInputLabel-outlined.Mui-focused": {
-      color: "#ff5700",
-    },
-  },
-});
+import Button from "./Button";
+import { TextfieldStyling } from "./utils/styling";
 
 const NumberSystem = ({
   input,
@@ -41,16 +10,13 @@ const NumberSystem = ({
   valid,
   handleOnClick,
   clickedOn,
+  handleOnButtonClick,
 }) => {
   const capitalize = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
-  const displayButton = () => {
-    return !clickedOn ? <button>Show Steps</button> : null;
-  };
-
-  const classes = useStyles();
+  const classes = TextfieldStyling();
 
   // prob put validation in here
 
@@ -67,7 +33,11 @@ const NumberSystem = ({
         className={classes.root}
       />
 
-      {displayButton()}
+      <Button
+        text={text}
+        clickedOn={clickedOn}
+        handleOnButtonClick={handleOnButtonClick}
+      />
     </div>
   );
 };

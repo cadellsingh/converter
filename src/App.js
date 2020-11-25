@@ -7,9 +7,7 @@ import { binaryToDecimal } from "./utils/binaryToDecimal";
 import { binaryToHexadecimal } from "./utils/binaryToHexadecimal";
 import { hexadecimalToDecimal } from "./utils/hexadecimalToDecimal";
 import { hexadecimalToBinary } from "./utils/hexadecimalToBinary";
-import DecimalCalculation from "./DecimalCalculation";
-import BinaryCalculation from "./BinaryCalculations";
-import HexadecimalCalculation from "./HexadecimalCalculation";
+import Calculations from "./Calculations";
 
 const App = () => {
   const [input, setInput] = useState({
@@ -19,10 +17,12 @@ const App = () => {
   });
 
   const [clickedOn, setClickedOn] = useState({
-    decimal: true,
-    binary: true,
-    hexadecimal: true,
+    decimal: false,
+    binary: false,
+    hexadecimal: false,
   });
+
+  const [showStepsFor, setShowStepsFor] = useState("");
 
   const handleOnChange = (event) => {
     const name = event.target.name;
@@ -45,7 +45,11 @@ const App = () => {
     });
   };
 
-  console.log(clickedOn);
+  const handleOnButtonClick = (event) => {
+    const name = event.target.name;
+
+    setShowStepsFor(name);
+  };
 
   const decimalConversion = (decimal) => {
     setInput({
@@ -74,9 +78,6 @@ const App = () => {
     });
   };
 
-  // if decimal is clicked on
-  // show "show steps" for binary & hexadecimal
-
   return (
     <div>
       <NumberSystemRow
@@ -84,11 +85,14 @@ const App = () => {
         handleOnChange={handleOnChange}
         handleOnClick={handleOnClick}
         clickedOn={clickedOn}
+        handleOnButtonClick={handleOnButtonClick}
       />
 
-      {/*<DecimalCalculation decimal={input.decimal} />*/}
-      {/*<BinaryCalculation binary={input.binary} />*/}
-      {/*<HexadecimalCalculation hexadecimal={input.hexadecimal} />*/}
+      <Calculations
+        showStepsFor={showStepsFor}
+        clickedOn={clickedOn}
+        input={input}
+      />
     </div>
   );
 };
