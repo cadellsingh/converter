@@ -4,8 +4,6 @@ import BinaryCalculation from "./BinaryCalculations";
 import HexadecimalCalculation from "./HexadecimalCalculation";
 
 const Calculations = ({ showStepsFor, clickedOn, input }) => {
-  console.log(clickedOn);
-
   const displayCalculation = () => {
     let calculation;
 
