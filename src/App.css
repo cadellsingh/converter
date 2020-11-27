@@ -25,6 +25,7 @@ html {
 
 .calculation-item {
     width: 70%;
+    margin: 0 auto;
 }
 
 @media (min-width: 800px) {
@@ -33,12 +34,12 @@ html {
         margin: 40px 0;
     }
 
-    .calculation-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    /*.calculation-grid {*/
+    /*    grid-template-columns: repeat(2, 1fr);*/
+    /*}*/
 
     .calculation-item {
-        width: 80%;
+        width: 50%;
     }
 
     .grid-item {
