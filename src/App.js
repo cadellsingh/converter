@@ -43,6 +43,8 @@ const App = () => {
       hexadecimal: true,
       [name]: false,
     });
+
+    setShowStepsFor("");
   };
 
   const handleOnButtonClick = (event) => {
