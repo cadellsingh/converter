@@ -4,7 +4,7 @@ import TableRow from "@material-ui/core/TableRow";
 
 export const StyledTableCell = withStyles((theme) => ({
   head: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: "#da4302",
     textAlign: "center",
     color: theme.palette.common.white,
   },
