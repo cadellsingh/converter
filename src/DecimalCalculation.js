@@ -8,7 +8,7 @@ import {
   TableCellCalculation,
 } from "./utils/styling";
 
-const DecimalCalculation = ({ decimal }) => {
+const DecimalCalculation = ({ decimal, showStepsFor }) => {
   const decimalToBinaryCalc = (decimal) => {
     let bitNum = 0;
     let calculations = [];
@@ -83,21 +83,29 @@ const DecimalCalculation = ({ decimal }) => {
     </TableRow>
   );
 
-  return (
-    // will be displaying one of these
-    <div className="calculation-grid">
+  let showAppropriateCalculation;
+
+  if (showStepsFor === "binary") {
+    showAppropriateCalculation = (
       <DisplayCalculation
         text="Decimal To Binary"
         styledTableCells={decimalToBinaryTableCells}
         calculation={decimalToBinaryCalc(decimal)}
       />
-
+    );
+  } else if (showStepsFor === "hexadecimal") {
+    showAppropriateCalculation = (
       <DisplayCalculation
         text="Decimal To Hexadecimal"
         styledTableCells={decimalToHexTableCells}
         calculation={decimalToHexadecimalCalc(decimal)}
       />
-    </div>
+    );
+  }
+
+  return (
+    // will be displaying one of these
+    <div>{showAppropriateCalculation}</div>
   );
 };
 

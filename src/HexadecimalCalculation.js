@@ -11,7 +11,7 @@ import {
   TableCellCalculation,
 } from "./utils/styling";
 
-const HexadecimalCalculation = ({ hexadecimal }) => {
+const HexadecimalCalculation = ({ hexadecimal, showStepsFor }) => {
   const hexadecimalToBinaryCalc = (hexadecimal) => {
     if (!hexadecimalValidation(hexadecimal)) {
       return null;
@@ -84,21 +84,27 @@ const HexadecimalCalculation = ({ hexadecimal }) => {
     </TableRow>
   );
 
-  return (
-    <div className="calculation-grid">
+  let showAppropriateCalculation;
+
+  if (showStepsFor === "decimal") {
+    showAppropriateCalculation = (
       <DisplayCalculation
         text="Hexadecimal To Decimal"
         styledTableCells={hexaToDecTableCells}
         calculation={hexadecimalToDecimalCalc(hexadecimal)}
       />
-
+    );
+  } else if (showStepsFor === "binary") {
+    showAppropriateCalculation = (
       <DisplayCalculation
         text="Hexadecimal To Binary"
         styledTableCells={hexaToBinaryTableCells}
         calculation={hexadecimalToBinaryCalc(hexadecimal)}
       />
-    </div>
-  );
+    );
+  }
+
+  return <div>{showAppropriateCalculation}</div>;
 };
 
 export default HexadecimalCalculation;

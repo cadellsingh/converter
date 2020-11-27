@@ -9,7 +9,7 @@ import {
   TableCellCalculation,
 } from "./utils/styling";
 
-const BinaryCalculation = ({ binary }) => {
+const BinaryCalculation = ({ binary, showStepsFor }) => {
   const binaryToHexaCalc = (binary) => {
     if (!binaryValidation(binary) || binary === "") {
       return null;
@@ -83,21 +83,27 @@ const BinaryCalculation = ({ binary }) => {
     </TableRow>
   );
 
-  return (
-    <div className="calculation-grid">
+  let showAppropriateCalculation;
+
+  if (showStepsFor === "decimal") {
+    showAppropriateCalculation = (
       <DisplayCalculation
         text="Binary To Decimal"
         styledTableCells={binaryToDecTableCells}
         calculation={binaryToDecimalCalc(binary)}
       />
-
+    );
+  } else if (showStepsFor === "hexadecimal") {
+    showAppropriateCalculation = (
       <DisplayCalculation
         text="Binary to Hexadecimal"
         styledTableCells={binaryToHexTableCells}
         calculation={binaryToHexaCalc(binary)}
       />
-    </div>
-  );
+    );
+  }
+
+  return <div>{showAppropriateCalculation}</div>;
 };
 
 export default BinaryCalculation;
