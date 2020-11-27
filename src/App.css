@@ -10,11 +10,15 @@ html {
 .number-system-grid {
     display: grid;
     justify-items: center;
-    margin-top: 40px;
 }
 
 .grid-item {
     width: 70%;
+    margin-top: 45px;
+}
+
+.button {
+    margin-top: 10px;
 }
 
 .calculation-grid {
@@ -25,7 +29,7 @@ html {
 
 .calculation-item {
     width: 70%;
-    margin: 0 auto;
+    margin: 0 auto 50px;
 }
 
 @media (min-width: 800px) {
@@ -34,12 +38,8 @@ html {
         margin: 40px 0;
     }
 
-    /*.calculation-grid {*/
-    /*    grid-template-columns: repeat(2, 1fr);*/
-    /*}*/
-
     .calculation-item {
-        width: 50%;
+        width: 60%;
     }
 
     .grid-item {

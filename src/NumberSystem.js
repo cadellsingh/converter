@@ -31,8 +31,6 @@ const NumberSystem = ({
         className={classes.root}
       />
 
-      {/*can send valid here */}
-      {/*if valid => show steps*/}
       <Button
         text={text}
         displaySteps={displaySteps}
