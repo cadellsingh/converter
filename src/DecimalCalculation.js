@@ -103,10 +103,7 @@ const DecimalCalculation = ({ decimal, showStepsFor }) => {
     );
   }
 
-  return (
-    // will be displaying one of these
-    <div>{showAppropriateCalculation}</div>
-  );
+  return <div>{showAppropriateCalculation}</div>;
 };
 
 export default DecimalCalculation;
