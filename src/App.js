@@ -77,20 +77,24 @@ const App = () => {
 
   const [showStepsFor, setShowStepsFor] = useState("");
 
+  // prob could pass the value into dispatchButtons
+  // if invalid, dont show buttons
   const handleOnChange = (event) => {
     const name = event.target.name;
     const value = event.target.value.trim();
 
     dispatchConversion({ type: name, value: value });
-  };
-
-  const handleOnClick = (event) => {
-    const name = event.target.name;
 
     dispatchButtons({ type: name });
-
-    setShowStepsFor("");
   };
+
+  // const handleOnClick = (event) => {
+  //   const name = event.target.name;
+  //
+  //   dispatchButtons({ type: name });
+  //
+  //   setShowStepsFor("");
+  // };
 
   const handleOnButtonClick = (event) => {
     const name = event.target.name;
@@ -104,7 +108,7 @@ const App = () => {
         value={{
           input: input,
           handleOnChange: handleOnChange,
-          handleOnClick: handleOnClick,
+          // handleOnClick: handleOnClick,
           handleOnButtonClick: handleOnButtonClick,
           displaySteps: displayShowStepsButton,
         }}

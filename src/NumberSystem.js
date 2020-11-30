@@ -26,21 +26,9 @@ const NumberSystem = ({ input, text, valid, displaySteps }) => {
         className={classes.root}
       />
 
-      <Button
-        text={text}
-        displaySteps={displaySteps}
-        // handleOnButtonClick={handleOnButtonClick}
-      />
+      <Button text={text} displaySteps={displaySteps} />
     </div>
   );
 };
 
 export default NumberSystem;
-
-// input,
-//     text,
-//     handleOnChange,
-//     valid,
-//     handleOnClick,
-//     displaySteps,
-//     handleOnButtonClick,

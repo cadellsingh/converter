@@ -11,8 +11,8 @@ const Button = ({ text, displaySteps }) => {
         <motion.button
           name={text}
           onClick={handleOnButtonClick}
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.9, rotate: -50 }}
+          whileHover={{ scale: 0.9 }}
+          className="button"
         >
           Show Steps
         </motion.button>
@@ -20,7 +20,7 @@ const Button = ({ text, displaySteps }) => {
     );
   };
 
-  return <div className="button">{displayButton()}</div>;
+  return <div>{displayButton()}</div>;
 };
 
 export default Button;
