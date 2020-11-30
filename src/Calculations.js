@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import DecimalCalculation from "./DecimalCalculation";
 import BinaryCalculation from "./BinaryCalculations";
 import HexadecimalCalculation from "./HexadecimalCalculation";
+import MyContext from "./MyContext";
 
-const Calculations = ({ showStepsFor, displaySteps, input }) => {
+const Calculations = ({ showStepsFor }) => {
+  const { input, displaySteps } = useContext(MyContext);
+
   // returns true if no input has been clicked on
   const hideCalculation = Object.values(displaySteps).every((value) => !value);
 
-  // displays appropriate calculation
-  const displayCalculation = () => {
+  // gets appropriate calculation
+  const getAppropriateCalculation = () => {
     let calculation;
 
     for (const [key, value] of Object.entries(displaySteps)) {
@@ -39,7 +42,7 @@ const Calculations = ({ showStepsFor, displaySteps, input }) => {
     return calculation;
   };
 
-  return <div>{!hideCalculation && displayCalculation()}</div>;
+  return <div>{!hideCalculation && getAppropriateCalculation()}</div>;
 };
 
 export default Calculations;

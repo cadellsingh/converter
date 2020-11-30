@@ -1,29 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import NumberSystem from "./NumberSystem";
 import {
   binaryValidation,
   decimalValidation,
   hexadecimalValidation,
 } from "./utils/validation";
+import MyContext from "./MyContext";
 
-const NumberSystemRow = ({
-  input,
-  handleOnChange,
-  handleOnClick,
-  displaySteps,
-  handleOnButtonClick,
-}) => {
+const NumberSystemRow = () => {
+  const { input, displaySteps } = useContext(MyContext);
+
   return (
     <div className="number-system-grid">
       <div className="grid-item">
         <NumberSystem
           input={input.decimal}
           text="decimal"
-          handleOnChange={handleOnChange}
-          handleOnClick={handleOnClick}
           valid={decimalValidation(input.decimal)}
           displaySteps={displaySteps.decimal}
-          handleOnButtonClick={handleOnButtonClick}
         />
       </div>
 
@@ -31,11 +25,8 @@ const NumberSystemRow = ({
         <NumberSystem
           input={input.binary}
           text="binary"
-          handleOnChange={handleOnChange}
-          handleOnClick={handleOnClick}
           valid={binaryValidation(input.binary)}
           displaySteps={displaySteps.binary}
-          handleOnButtonClick={handleOnButtonClick}
         />
       </div>
 
@@ -43,11 +34,8 @@ const NumberSystemRow = ({
         <NumberSystem
           input={input.hexadecimal}
           text="hexadecimal"
-          handleOnChange={handleOnChange}
-          handleOnClick={handleOnClick}
           valid={hexadecimalValidation(input.hexadecimal)}
           displaySteps={displaySteps.hexadecimal}
-          handleOnButtonClick={handleOnButtonClick}
         />
       </div>
     </div>
@@ -55,3 +43,9 @@ const NumberSystemRow = ({
 };
 
 export default NumberSystemRow;
+
+// input,
+//     handleOnChange,
+//     handleOnClick,
+//     displaySteps,
+//     handleOnButtonClick,

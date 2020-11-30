@@ -1,17 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "./Button";
 import { TextfieldStyling } from "./utils/styling";
+import MyContext from "./MyContext";
 
-const NumberSystem = ({
-  input,
-  text,
-  handleOnChange,
-  valid,
-  handleOnClick,
-  displaySteps,
-  handleOnButtonClick,
-}) => {
+const NumberSystem = ({ input, text, valid, displaySteps }) => {
+  const { handleOnChange, handleOnClick } = useContext(MyContext);
+
   const capitalize = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
@@ -34,10 +29,18 @@ const NumberSystem = ({
       <Button
         text={text}
         displaySteps={displaySteps}
-        handleOnButtonClick={handleOnButtonClick}
+        // handleOnButtonClick={handleOnButtonClick}
       />
     </div>
   );
 };
 
 export default NumberSystem;
+
+// input,
+//     text,
+//     handleOnChange,
+//     valid,
+//     handleOnClick,
+//     displaySteps,
+//     handleOnButtonClick,

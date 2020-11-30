@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
+import MyContext from "./MyContext";
 
-const Button = ({ text, displaySteps, handleOnButtonClick }) => {
+const Button = ({ text, displaySteps }) => {
+  const { handleOnButtonClick } = useContext(MyContext);
+
   const displayButton = () => {
     return (
       displaySteps && (
@@ -21,11 +24,3 @@ const Button = ({ text, displaySteps, handleOnButtonClick }) => {
 };
 
 export default Button;
-
-// return (
-//     displaySteps && (
-//         <button name={text} onClick={handleOnButtonClick}>
-//             Show Steps
-//         </button>
-//     )
-// );
