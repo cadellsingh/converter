@@ -9,6 +9,11 @@ import { hexadecimalToDecimal } from "./utils/hexadecimalToDecimal";
 import { hexadecimalToBinary } from "./utils/hexadecimalToBinary";
 import Calculations from "./Calculations";
 import MyContext from "./MyContext";
+import {
+  binaryValidation,
+  decimalValidation,
+  hexadecimalValidation,
+} from "./utils/validation";
 
 const calculationButtons = {
   decimal: false,
@@ -17,18 +22,28 @@ const calculationButtons = {
 };
 
 const buttonReducer = (state, action) => {
-  Object.keys(state).forEach((key) => (state[key] = true));
+  showCalculationButton(state, true);
+
+  let value = action.value;
 
   switch (action.type) {
     case "decimal":
+      !decimalValidation(value) && showCalculationButton(state, false);
       return { ...state, decimal: false };
     case "binary":
+      !binaryValidation(value) && showCalculationButton(state, false);
       return { ...state, binary: false };
     case "hexadecimal":
+      !hexadecimalValidation(value) && showCalculationButton(state, false);
       return { ...state, hexadecimal: false };
     default:
       throw new Error();
   }
+};
+
+// false => invalid input was entered and should hide the "show steps" button
+const showCalculationButton = (state, bool) => {
+  Object.keys(state).forEach((key) => (state[key] = bool));
 };
 
 const numberSystems = {
@@ -77,24 +92,16 @@ const App = () => {
 
   const [showStepsFor, setShowStepsFor] = useState("");
 
-  // prob could pass the value into dispatchButtons
-  // if invalid, dont show buttons
   const handleOnChange = (event) => {
     const name = event.target.name;
     const value = event.target.value.trim();
 
     dispatchConversion({ type: name, value: value });
 
-    dispatchButtons({ type: name });
-  };
+    dispatchButtons({ type: name, value: value });
 
-  // const handleOnClick = (event) => {
-  //   const name = event.target.name;
-  //
-  //   dispatchButtons({ type: name });
-  //
-  //   setShowStepsFor("");
-  // };
+    setShowStepsFor("");
+  };
 
   const handleOnButtonClick = (event) => {
     const name = event.target.name;
@@ -108,7 +115,6 @@ const App = () => {
         value={{
           input: input,
           handleOnChange: handleOnChange,
-          // handleOnClick: handleOnClick,
           handleOnButtonClick: handleOnButtonClick,
           displaySteps: displayShowStepsButton,
         }}

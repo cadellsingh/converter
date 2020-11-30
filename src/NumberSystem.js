@@ -5,7 +5,7 @@ import { TextfieldStyling } from "./utils/styling";
 import MyContext from "./MyContext";
 
 const NumberSystem = ({ input, text, valid, displaySteps }) => {
-  const { handleOnChange, handleOnClick } = useContext(MyContext);
+  const { handleOnChange } = useContext(MyContext);
 
   const capitalize = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -21,7 +21,6 @@ const NumberSystem = ({ input, text, valid, displaySteps }) => {
         name={text}
         value={input}
         onChange={handleOnChange}
-        onClick={handleOnClick}
         fullWidth={true}
         className={classes.root}
       />

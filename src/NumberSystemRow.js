@@ -43,9 +43,3 @@ const NumberSystemRow = () => {
 };
 
 export default NumberSystemRow;
-
-// input,
-//     handleOnChange,
-//     handleOnClick,
-//     displaySteps,
-//     handleOnButtonClick,

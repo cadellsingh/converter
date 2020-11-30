@@ -7,20 +7,23 @@ import {
   StyledTableRow,
   TableCellCalculation,
 } from "./utils/styling";
+import { decimalToBinary } from "./utils/decimalToBinary";
+import { decimalToHexadecimal } from "./utils/decimalToHexadecimal";
 
 const DecimalCalculation = ({ decimal, showStepsFor }) => {
   const decimalToBinaryCalc = (decimal) => {
     let bitNum = 0;
     let calculations = [];
+    let counter = decimal;
 
-    while (decimal > 0) {
-      let quotient = Math.floor(decimal / 2);
-      let remainder = decimal % 2;
+    while (counter > 0) {
+      let quotient = Math.floor(counter / 2);
+      let remainder = counter % 2;
 
       calculations.push(
         <StyledTableRow key={uid()}>
           <TableCellCalculation>
-            {decimal} <span>&#x2215;</span> 2
+            {counter} <span>&#x2215;</span> 2
           </TableCellCalculation>
           <TableCellCalculation>{quotient}</TableCellCalculation>
           <TableCellCalculation>{remainder}</TableCellCalculation>
@@ -29,7 +32,7 @@ const DecimalCalculation = ({ decimal, showStepsFor }) => {
       );
 
       bitNum++;
-      decimal = quotient;
+      counter = quotient;
     }
 
     return calculations;
@@ -38,10 +41,11 @@ const DecimalCalculation = ({ decimal, showStepsFor }) => {
   const decimalToHexadecimalCalc = (decimal) => {
     let bitNum = 0;
     let calculations = [];
+    let counter = decimal;
 
-    while (decimal > 0) {
-      let quotient = Math.floor(decimal / 16);
-      let remainder = decimal % 16;
+    while (counter > 0) {
+      let quotient = Math.floor(counter / 16);
+      let remainder = counter % 16;
       let remainderHex = remainder > 9 ? binaryLetter(remainder) : remainder;
 
       calculations.push(
@@ -58,7 +62,7 @@ const DecimalCalculation = ({ decimal, showStepsFor }) => {
       );
 
       bitNum++;
-      decimal = quotient;
+      counter = quotient;
     }
 
     return calculations;
