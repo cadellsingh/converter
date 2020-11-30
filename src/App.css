@@ -21,6 +21,7 @@ html {
     margin-top: 10px;
     width: 100%;
     padding: 10px;
+    font-size: 16px;
 }
 
 .calculation-grid {
@@ -34,6 +35,7 @@ html {
     margin: 0 auto 50px;
 }
 
+/*mobile first*/
 @media (min-width: 800px) {
     .number-system-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -42,6 +44,7 @@ html {
 
     .calculation-item {
         width: 60%;
+        text-align: center;
     }
 
     .grid-item {
