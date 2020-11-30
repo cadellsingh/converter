@@ -12,5 +12,5 @@
 - JavaScript ES6
 - React
 - Material UI
-- Used Framer Motion for animations
+- Framer Motion & React-animation for animations
 - HTML/CSS
