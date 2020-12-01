@@ -11,10 +11,8 @@ import DisplayCalculation from "./DisplayCalculation";
 
 const BinaryToDecimalCalculation = ({ binary }) => {
   const calculation = (binary) => {
-    binary = reverseString(binary);
-
     return valuesToBeAdded(binary).map((value, index) => {
-      let digit = binary.split("")[index];
+      let digit = reverseString(binary).split("")[index];
       return (
         <StyledTableRow key={uid()}>
           <TableCellCalculation>{digit}</TableCellCalculation>
@@ -31,28 +29,37 @@ const BinaryToDecimalCalculation = ({ binary }) => {
     });
   };
 
-  const valuesToBeAdded = (binary) => {
+  const valuesToBeAdded = () => {
     if (!binaryValidation(binary)) {
       return null;
     }
 
-    return binary.split("").map((digit, index) => {
-      return digit * Math.pow(2, index);
-    });
+    return reverseString(binary)
+      .split("")
+      .map((digit, index) => {
+        return digit * Math.pow(2, index);
+      });
   };
-
-  // console.log(valuesToBeAdded(binary));
 
   const footerCalculation = (arr) => {
     const sum = arr.reduce((accumulator, value) => {
       return accumulator + value;
     }, 0);
 
-    console.log(sum);
-
-    return arr.map((value, index) => {
-      return <span key={index}>{value}</span>;
+    let calculation = arr.map((value, index) => {
+      let sign = index + 1 === arr.length ? "=" : "+ ";
+      return (
+        value !== 0 && (
+          <span key={index}>
+            {value} {sign}
+          </span>
+        )
+      );
     });
+
+    calculation.push(<span key={uid()}> {sum}</span>);
+
+    return calculation;
   };
 
   const binaryToDecTableCells = (
@@ -70,7 +77,7 @@ const BinaryToDecimalCalculation = ({ binary }) => {
       text="Binary To Decimal"
       styledTableCells={binaryToDecTableCells}
       calculation={calculation(binary)}
-      footer={footerCalculation(valuesToBeAdded(binary))}
+      footer={footerCalculation(valuesToBeAdded())}
     />
   );
 };

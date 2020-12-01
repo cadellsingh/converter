@@ -8,6 +8,7 @@ import {
 } from "./utils/styling";
 import TableRow from "@material-ui/core/TableRow";
 import DisplayCalculation from "./DisplayCalculation";
+import { binaryToHexadecimal } from "./utils/binaryToHexadecimal";
 
 const BinaryToHexadecimalCalculation = ({ binary }) => {
   const calculation = (binary) => {
@@ -40,6 +41,16 @@ const BinaryToHexadecimalCalculation = ({ binary }) => {
     });
   };
 
+  const footerCalculation = () => {
+    return (
+      <span>
+        {binary}
+        <sub>2</sub> = {binaryToHexadecimal(binary)}
+        <sub>16</sub>
+      </span>
+    );
+  };
+
   const binaryToHexTableCells = (
     <TableRow>
       <StyledTableCell>Binary</StyledTableCell>
@@ -52,6 +63,7 @@ const BinaryToHexadecimalCalculation = ({ binary }) => {
       text="Binary to Hexadecimal"
       styledTableCells={binaryToHexTableCells}
       calculation={calculation(binary)}
+      footer={footerCalculation()}
     />
   );
 };
