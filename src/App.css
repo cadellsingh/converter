@@ -2,6 +2,10 @@ html {
     background-color: #032535;
 }
 
+.footer {
+    padding: 15px;
+}
+
 .center-text {
     text-align: center;
     color: #ffb515;
