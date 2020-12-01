@@ -21,7 +21,7 @@ const DisplayCalculation = ({
             <TableHead>{styledTableCells}</TableHead>
             <TableBody>{calculation}</TableBody>
           </Table>
-          {footer}
+          <div className="footer">{footer}</div>
         </TableContainer>
       </List>
     </div>
