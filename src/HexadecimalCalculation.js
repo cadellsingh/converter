@@ -1,110 +1,30 @@
 import React from "react";
-import { binaryValue, uid } from "./utils/helpers";
-import { reverseString } from "./utils/helpers";
-import { decimalToBinary } from "./utils/hexadecimalToBinary";
-import { hexadecimalValidation } from "./utils/validation";
-import TableRow from "@material-ui/core/TableRow";
-import DisplayCalculation from "./DisplayCalculation";
-import {
-  StyledTableCell,
-  StyledTableRow,
-  TableCellCalculation,
-} from "./utils/styling";
+import HexadecimalToDecimalCalculation from "./HexadecimalToDecimalCalculation";
+import HexadecimalToBinaryCalculation from "./HexadecimalToBinaryCalculation";
+import { AnimateOnChange } from "react-animation";
 
 const HexadecimalCalculation = ({ hexadecimal, showStepsFor }) => {
-  const hexadecimalToBinaryCalc = (hexadecimal) => {
-    if (!hexadecimalValidation(hexadecimal)) {
-      return null;
-    }
-
-    return hexadecimal.split("").map((alpha) => {
-      let hex = isNaN(alpha) ? binaryValue(alpha) : alpha;
-      let binary = decimalToBinary(hex);
-
-      return (
-        <StyledTableRow key={uid()}>
-          <TableCellCalculation>
-            ({alpha.toUpperCase()})<sub>16</sub>
-          </TableCellCalculation>
-          <TableCellCalculation>
-            ({binary})<sub>2</sub>
-          </TableCellCalculation>
-        </StyledTableRow>
-      );
-    });
-  };
-
-  const hexadecimalToDecimalCalc = (hexadecimal) => {
-    if (!hexadecimalValidation(hexadecimal)) {
-      return null;
-    }
-
-    const reversedString = reverseString(hexadecimal);
-
-    let hexaArray = reversedString.split("").map((alpha) => {
-      return isNaN(alpha) ? binaryValue(alpha) : parseInt(alpha);
-    });
-
-    return hexaArray.map((digit, index) => {
-      let power = digit * Math.pow(16, index);
-      let hex = reversedString.split("")[index];
-
-      return (
-        <StyledTableRow key={uid()}>
-          <TableCellCalculation>{hex.toUpperCase()}</TableCellCalculation>
-          <TableCellCalculation>{digit}</TableCellCalculation>
-          <TableCellCalculation>
-            {digit}
-            <span>&#215;</span>16<sup>{index}</sup>
-          </TableCellCalculation>
-          <TableCellCalculation>
-            {power}
-            <sub>10</sub>
-          </TableCellCalculation>
-        </StyledTableRow>
-      );
-    });
-  };
-
-  const hexaToDecTableCells = (
-    <TableRow>
-      <StyledTableCell>Hexadecimal</StyledTableCell>
-      <StyledTableCell>DEC Value</StyledTableCell>
-      <StyledTableCell>
-        DEC <span>&#215;</span> 16<sup>n</sup>
-      </StyledTableCell>
-      <StyledTableCell>Value</StyledTableCell>
-    </TableRow>
-  );
-
-  const hexaToBinaryTableCells = (
-    <TableRow>
-      <StyledTableCell>Hexadecimal</StyledTableCell>
-      <StyledTableCell>Binary</StyledTableCell>
-    </TableRow>
-  );
-
   let showAppropriateCalculation;
 
   if (showStepsFor === "decimal") {
     showAppropriateCalculation = (
-      <DisplayCalculation
-        text="Hexadecimal To Decimal"
-        styledTableCells={hexaToDecTableCells}
-        calculation={hexadecimalToDecimalCalc(hexadecimal)}
-      />
+      <HexadecimalToDecimalCalculation hexadecimal={hexadecimal} />
     );
   } else if (showStepsFor === "binary") {
     showAppropriateCalculation = (
-      <DisplayCalculation
-        text="Hexadecimal To Binary"
-        styledTableCells={hexaToBinaryTableCells}
-        calculation={hexadecimalToBinaryCalc(hexadecimal)}
-      />
+      <HexadecimalToBinaryCalculation hexadecimal={hexadecimal} />
     );
   }
 
-  return <div>{showAppropriateCalculation}</div>;
+  return (
+    <AnimateOnChange
+      animation="bounce"
+      style={{ width: "100%" }}
+      duration={500}
+    >
+      {showAppropriateCalculation}
+    </AnimateOnChange>
+  );
 };
 
 export default HexadecimalCalculation;
