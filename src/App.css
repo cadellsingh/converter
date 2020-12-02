@@ -4,6 +4,7 @@ html {
 
 .footer {
     padding: 15px;
+    text-align: center;
 }
 
 .center-text {
@@ -53,5 +54,15 @@ html {
 
     .grid-item {
         width: 80%;
+    }
+}
+
+@media (max-width:500px ) {
+    .calculation-item {
+        width: 90%;
+    }
+
+    .grid-item {
+        width: 90%;
     }
 }
