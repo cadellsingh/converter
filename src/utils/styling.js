@@ -27,6 +27,14 @@ export const TableCellCalculation = withStyles(() => ({
   },
 }))(TableCell);
 
+export const HighlightedTableCell = withStyles(() => ({
+  body: {
+    textAlign: "center",
+    color: "#da4302",
+    fontWeight: "900",
+  },
+}))(TableCell);
+
 export const TextfieldStyling = makeStyles({
   root: {
     "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
