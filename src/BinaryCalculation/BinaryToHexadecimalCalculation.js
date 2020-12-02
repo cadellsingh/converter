@@ -7,6 +7,7 @@ import {
   uid,
 } from "../utils/helpers";
 import {
+  HighlightedTableCell,
   StyledTableCell,
   StyledTableRow,
   TableCellCalculation,
@@ -38,9 +39,9 @@ const BinaryToHexadecimalCalculation = ({ binary }) => {
           <TableCellCalculation>
             ({reverseString(data)})<sub>2</sub>
           </TableCellCalculation>
-          <TableCellCalculation>
+          <HighlightedTableCell>
             ({hexadecimal})<sub>16</sub>
-          </TableCellCalculation>
+          </HighlightedTableCell>
         </StyledTableRow>
       );
     });

@@ -2,6 +2,7 @@ import React from "react";
 import { hexadecimalValidation } from "../utils/validation";
 import { binaryValue, reverseString, uid } from "../utils/helpers";
 import {
+  HighlightedTableCell,
   StyledTableCell,
   StyledTableRow,
   TableCellCalculation,
@@ -26,10 +27,17 @@ const HexadecimalToDecimalCalculation = ({ hexadecimal }) => {
             {decValues[index]}
             <span>&#215;</span>16<sup>{index}</sup>
           </TableCellCalculation>
-          <TableCellCalculation>
-            {digit}
-            <sub>10</sub>
-          </TableCellCalculation>
+          {digit === 0 ? (
+            <TableCellCalculation>
+              {digit}
+              <sub>10</sub>
+            </TableCellCalculation>
+          ) : (
+            <HighlightedTableCell>
+              {digit}
+              <sub>10</sub>
+            </HighlightedTableCell>
+          )}
         </StyledTableRow>
       );
     });

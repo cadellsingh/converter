@@ -3,6 +3,7 @@ import { hexadecimalValidation } from "../utils/validation";
 import { binaryValue, uid } from "../utils/helpers";
 import { decimalToBinary } from "../utils/hexadecimalToBinary";
 import {
+  HighlightedTableCell,
   StyledTableCell,
   StyledTableRow,
   TableCellCalculation,
@@ -26,9 +27,9 @@ const HexadecimalToBinaryCalculation = ({ hexadecimal }) => {
           <TableCellCalculation>
             ({alpha.toUpperCase()})<sub>16</sub>
           </TableCellCalculation>
-          <TableCellCalculation>
+          <HighlightedTableCell>
             ({binary})<sub>2</sub>
-          </TableCellCalculation>
+          </HighlightedTableCell>
         </StyledTableRow>
       );
     });

@@ -1,6 +1,7 @@
 import React from "react";
 import { binaryLetter, uid } from "../utils/helpers";
 import {
+  HighlightedTableCell,
   StyledTableCell,
   StyledTableRow,
   TableCellCalculation,
@@ -28,7 +29,7 @@ const DecimalToHexadecimalCalculation = ({ decimal }) => {
           </TableCellCalculation>
           <TableCellCalculation>{quotient}</TableCellCalculation>
           <TableCellCalculation>{remainder}</TableCellCalculation>
-          <TableCellCalculation>{remainderHex}</TableCellCalculation>
+          <HighlightedTableCell>{remainderHex}</HighlightedTableCell>
           <TableCellCalculation>{bitNum}</TableCellCalculation>
         </StyledTableRow>
       );

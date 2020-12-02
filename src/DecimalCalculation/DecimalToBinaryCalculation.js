@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  HighlightedTableCell,
   StyledTableCell,
   StyledTableRow,
   TableCellCalculation,
@@ -25,7 +26,7 @@ const DecimalToBinaryCalculation = ({ decimal }) => {
             {counter} <span>&#x2215;</span> 2
           </TableCellCalculation>
           <TableCellCalculation>{quotient}</TableCellCalculation>
-          <TableCellCalculation>{remainder}</TableCellCalculation>
+          <HighlightedTableCell>{remainder}</HighlightedTableCell>
           <TableCellCalculation>{bitNum}</TableCellCalculation>
         </StyledTableRow>
       );

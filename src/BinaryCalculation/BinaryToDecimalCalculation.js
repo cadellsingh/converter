@@ -2,6 +2,7 @@ import React from "react";
 import { binaryValidation } from "../utils/validation";
 import { reverseString, uid } from "../utils/helpers";
 import {
+  HighlightedTableCell,
   StyledTableCell,
   StyledTableRow,
   TableCellCalculation,
@@ -47,10 +48,17 @@ const BinaryToDecimalCalculation = ({ binary }) => {
             {digit}
             <span>&#215;</span>2<sup>{index}</sup>
           </TableCellCalculation>
-          <TableCellCalculation>
-            {value}
-            <sub>10</sub>
-          </TableCellCalculation>
+          {value === 0 ? (
+            <TableCellCalculation>
+              {value}
+              <sub>10</sub>
+            </TableCellCalculation>
+          ) : (
+            <HighlightedTableCell>
+              {value}
+              <sub>10</sub>
+            </HighlightedTableCell>
+          )}
         </StyledTableRow>
       );
     });
