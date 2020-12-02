@@ -6,11 +6,11 @@
 - Didn't use any built in or imported functions for the conversions.
 
 ## Demo
-- Live demo coming soon
+- You can view it here [NumberSystemConversion](https://numbersystemconversion.netlify.app)
 
 ## Tech Stack
 - JavaScript ES6
-- React
+- React-rewi
 - Material UI
 - Framer Motion & React-animation for animations
 - HTML/CSS
