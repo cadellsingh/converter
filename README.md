@@ -10,7 +10,7 @@
 
 ## Tech Stack
 - JavaScript ES6
-- React-rewi
+- Reactjs
 - Material UI
 - Framer Motion & React-animation for animations
 - HTML/CSS
