@@ -15,14 +15,15 @@ export const footerCalculation = (arr) => {
     return accumulator + value;
   }, 0);
 
+  arr = arr.filter((value) => value !== 0);
+
   let calculation = arr.map((value, index) => {
     let sign = index + 1 === arr.length ? "=" : "+ ";
+
     return (
-      value !== 0 && (
-        <span key={index}>
-          {value} {sign}
-        </span>
-      )
+      <span key={index}>
+        {value} {sign}
+      </span>
     );
   });
 
