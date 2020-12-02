@@ -1,13 +1,40 @@
 import React from "react";
-import { binaryValidation } from "./utils/validation";
-import { reverseString, uid } from "./utils/helpers";
+import { binaryValidation } from "../utils/validation";
+import { reverseString, uid } from "../utils/helpers";
 import {
   StyledTableCell,
   StyledTableRow,
   TableCellCalculation,
-} from "./utils/styling";
+} from "../utils/styling";
 import TableRow from "@material-ui/core/TableRow";
-import DisplayCalculation from "./DisplayCalculation";
+import DisplayCalculation from "../DisplayCalculation";
+
+export const footerCalculation = (arr) => {
+  const sum = arr.reduce((accumulator, value) => {
+    return accumulator + value;
+  }, 0);
+
+  let calculation = arr.map((value, index) => {
+    let sign = index + 1 === arr.length ? "=" : "+ ";
+    return (
+      value !== 0 && (
+        <span key={index}>
+          {value} {sign}
+        </span>
+      )
+    );
+  });
+
+  calculation.push(
+    <span key={uid()}>
+      {" "}
+      {sum}
+      <sub>10</sub>
+    </span>
+  );
+
+  return calculation;
+};
 
 const BinaryToDecimalCalculation = ({ binary }) => {
   const calculation = (binary) => {
@@ -39,27 +66,6 @@ const BinaryToDecimalCalculation = ({ binary }) => {
       .map((digit, index) => {
         return digit * Math.pow(2, index);
       });
-  };
-
-  const footerCalculation = (arr) => {
-    const sum = arr.reduce((accumulator, value) => {
-      return accumulator + value;
-    }, 0);
-
-    let calculation = arr.map((value, index) => {
-      let sign = index + 1 === arr.length ? "=" : "+ ";
-      return (
-        value !== 0 && (
-          <span key={index}>
-            {value} {sign}
-          </span>
-        )
-      );
-    });
-
-    calculation.push(<span key={uid()}> {sum}</span>);
-
-    return calculation;
   };
 
   const binaryToDecTableCells = (

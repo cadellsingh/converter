@@ -1,14 +1,19 @@
 import React from "react";
-import { binaryValidation } from "./utils/validation";
-import { binaryLetter, reverseString, splitString, uid } from "./utils/helpers";
+import { binaryValidation } from "../utils/validation";
+import {
+  binaryLetter,
+  reverseString,
+  splitString,
+  uid,
+} from "../utils/helpers";
 import {
   StyledTableCell,
   StyledTableRow,
   TableCellCalculation,
-} from "./utils/styling";
+} from "../utils/styling";
 import TableRow from "@material-ui/core/TableRow";
-import DisplayCalculation from "./DisplayCalculation";
-import { binaryToHexadecimal } from "./utils/binaryToHexadecimal";
+import DisplayCalculation from "../DisplayCalculation";
+import { binaryToHexadecimal } from "../utils/binaryToHexadecimal";
 
 const BinaryToHexadecimalCalculation = ({ binary }) => {
   const calculation = (binary) => {

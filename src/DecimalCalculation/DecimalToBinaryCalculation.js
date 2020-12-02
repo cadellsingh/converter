@@ -3,10 +3,11 @@ import {
   StyledTableCell,
   StyledTableRow,
   TableCellCalculation,
-} from "./utils/styling";
-import { uid } from "./utils/helpers";
+} from "../utils/styling";
+import { uid } from "../utils/helpers";
 import TableRow from "@material-ui/core/TableRow";
-import DisplayCalculation from "./DisplayCalculation";
+import DisplayCalculation from "../DisplayCalculation";
+import { decimalToBinary } from "../utils/decimalToBinary";
 
 const DecimalToBinaryCalculation = ({ decimal }) => {
   const calculation = (decimal) => {
@@ -36,6 +37,16 @@ const DecimalToBinaryCalculation = ({ decimal }) => {
     return calculations;
   };
 
+  const footerCalculation = () => {
+    return (
+      <span>
+        {decimal}
+        <sub>10</sub> = {decimalToBinary(decimal)}
+        <sub>2</sub>
+      </span>
+    );
+  };
+
   const decimalToBinaryTableCells = (
     <TableRow>
       <StyledTableCell>Division by 2</StyledTableCell>
@@ -50,6 +61,7 @@ const DecimalToBinaryCalculation = ({ decimal }) => {
       text="Decimal To Binary"
       styledTableCells={decimalToBinaryTableCells}
       calculation={calculation(decimal)}
+      footer={footerCalculation()}
     />
   );
 };

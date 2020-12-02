@@ -1,14 +1,15 @@
 import React from "react";
-import { hexadecimalValidation } from "./utils/validation";
-import { binaryValue, uid } from "./utils/helpers";
-import { decimalToBinary } from "./utils/hexadecimalToBinary";
+import { hexadecimalValidation } from "../utils/validation";
+import { binaryValue, uid } from "../utils/helpers";
+import { decimalToBinary } from "../utils/hexadecimalToBinary";
 import {
   StyledTableCell,
   StyledTableRow,
   TableCellCalculation,
-} from "./utils/styling";
+} from "../utils/styling";
 import TableRow from "@material-ui/core/TableRow";
-import DisplayCalculation from "./DisplayCalculation";
+import DisplayCalculation from "../DisplayCalculation";
+import { hexadecimalToBinary } from "../utils/hexadecimalToBinary";
 
 const HexadecimalToBinaryCalculation = ({ hexadecimal }) => {
   const calculation = (hexadecimal) => {
@@ -33,6 +34,16 @@ const HexadecimalToBinaryCalculation = ({ hexadecimal }) => {
     });
   };
 
+  const footerCalculation = () => {
+    return (
+      <span>
+        {hexadecimal}
+        <sub>16</sub> = {hexadecimalToBinary(hexadecimal)}
+        <sub>2</sub>
+      </span>
+    );
+  };
+
   const hexaToBinaryTableCells = (
     <TableRow>
       <StyledTableCell>Hexadecimal</StyledTableCell>
@@ -45,6 +56,7 @@ const HexadecimalToBinaryCalculation = ({ hexadecimal }) => {
       text="Hexadecimal To Binary"
       styledTableCells={hexaToBinaryTableCells}
       calculation={calculation(hexadecimal)}
+      footer={footerCalculation()}
     />
   );
 };
