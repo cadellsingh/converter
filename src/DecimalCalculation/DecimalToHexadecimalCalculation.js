@@ -24,8 +24,7 @@ const DecimalToHexadecimalCalculation = ({ decimal }) => {
       calculations.push(
         <StyledTableRow key={uid()}>
           <TableCellCalculation>
-            {decimal}
-            <span>&#x2215;</span>16
+            {decimal} <span>&#x2215;</span> 16
           </TableCellCalculation>
           <TableCellCalculation>{quotient}</TableCellCalculation>
           <TableCellCalculation>{remainder}</TableCellCalculation>
