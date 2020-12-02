@@ -21,17 +21,29 @@ export const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-export const TableCellCalculation = withStyles(() => ({
+export const TableCellCalculation = withStyles((theme) => ({
   body: {
     textAlign: "center",
+    [theme.breakpoints.down("xl")]: {
+      fontSize: 18,
+    },
+    [theme.breakpoints.down("md")]: {
+      fontSize: 14,
+    },
   },
 }))(TableCell);
 
-export const HighlightedTableCell = withStyles(() => ({
+export const HighlightedTableCell = withStyles((theme) => ({
   body: {
     textAlign: "center",
     color: "#da4302",
     fontWeight: "900",
+    [theme.breakpoints.down("xl")]: {
+      fontSize: 18,
+    },
+    [theme.breakpoints.down("md")]: {
+      fontSize: 14,
+    },
   },
 }))(TableCell);
 
