@@ -21,6 +21,7 @@ const calculationButtons = {
   hexadecimal: false,
 };
 
+// determines which "show steps" button to show
 const buttonReducer = (state, action) => {
   showCalculationButton(state, true);
 
