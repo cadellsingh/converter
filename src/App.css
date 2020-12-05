@@ -1,68 +1,68 @@
 html {
-    background-color: #032535;
+  background-color: #032535;
 }
 
 .footer {
-    padding: 15px;
-    text-align: center;
+  padding: 15px;
+  text-align: center;
 }
 
 .center-text {
-    text-align: center;
-    color: #ffb515;
+  text-align: center;
+  color: #ffb515;
 }
 
 .number-system-grid {
-    display: grid;
-    justify-items: center;
+  display: grid;
+  justify-items: center;
 }
 
 .grid-item {
-    width: 70%;
-    margin-top: 45px;
+  width: 70%;
+  margin-top: 45px;
 }
 
 .button {
-    margin-top: 10px;
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
 }
 
 .calculation-grid {
-    display: grid;
-    justify-items: center;
-    margin-top: 40px;
+  display: grid;
+  justify-items: center;
+  margin-top: 40px;
 }
 
 .calculation-item {
-    width: 70%;
-    margin: 0 auto 50px;
+  width: 70%;
+  margin: 0 auto 50px;
 }
 
 /*mobile first*/
 @media (min-width: 800px) {
-    .number-system-grid {
-        grid-template-columns: repeat(3, 1fr);
-        margin: 40px 0;
-    }
+  .number-system-grid {
+    grid-template-columns: repeat(3, 1fr);
+    margin: 40px 0;
+  }
 
-    .calculation-item {
-        width: 60%;
-        text-align: center;
-    }
+  .calculation-item {
+    width: 60%;
+    text-align: center;
+  }
 
-    .grid-item {
-        width: 80%;
-    }
+  .grid-item {
+    width: 80%;
+  }
 }
 
-@media (max-width:500px ) {
-    .calculation-item {
-        width: 90%;
-    }
+@media (max-width: 500px) {
+  .calculation-item {
+    width: 90%;
+  }
 
-    .grid-item {
-        width: 90%;
-    }
+  .grid-item {
+    width: 90%;
+  }
 }
