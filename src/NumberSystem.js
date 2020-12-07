@@ -15,15 +15,17 @@ const NumberSystem = ({ input, text, valid, displaySteps }) => {
 
   return (
     <div>
-      <TextField
-        variant="outlined"
-        label={!valid ? "Invalid" : capitalize(text)}
-        name={text}
-        value={input}
-        onChange={handleOnChange}
-        fullWidth={true}
-        className={classes.root}
-      />
+      <form>
+        <TextField
+          variant="outlined"
+          label={!valid ? "Invalid" : capitalize(text)}
+          name={text}
+          value={input}
+          onChange={handleOnChange}
+          fullWidth={true}
+          className={classes.root}
+        />
+      </form>
 
       <Button text={text} displaySteps={displaySteps} />
     </div>
