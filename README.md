@@ -17,3 +17,28 @@
 - Material UI
 - Framer Motion & React-animation for animations
 - HTML/CSS
+
+## Installation
+1. Clone the repo
+
+   ```
+   git clone https://github.com/cadellsingh/converter.git
+   ```
+
+2. Change working directory
+
+   ```
+   cd converter/
+   ```
+
+3. Install any dependencies
+
+   ```
+   yarn install
+   ```
+
+4. Run application
+
+   ```
+   yarn start
+   ```
