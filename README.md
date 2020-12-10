@@ -10,13 +10,13 @@
 
 - You can view it here [Number System Conversion](https://numbersystemconversion.netlify.app)
 
-## Tech Stack
-
+## Made With
 - JavaScript ES6
 - Reactjs
 - Material UI
 - Framer Motion & React-animation for animations
 - HTML/CSS
+- And of course... ☕️
 
 ## Installation
 1. Clone the repo
