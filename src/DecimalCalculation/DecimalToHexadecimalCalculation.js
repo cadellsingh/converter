@@ -14,11 +14,10 @@ const DecimalToHexadecimalCalculation = ({ decimal }) => {
   const calculation = (decimal) => {
     let bitNum = 0;
     let calculations = [];
-    let counter = decimal;
 
-    while (counter > 0) {
-      let quotient = Math.floor(counter / 16);
-      let remainder = counter % 16;
+    while (decimal > 0) {
+      let quotient = Math.floor(decimal / 16);
+      let remainder = decimal % 16;
       let remainderHex = remainder > 9 ? binaryLetter(remainder) : remainder;
 
       calculations.push(
@@ -34,7 +33,7 @@ const DecimalToHexadecimalCalculation = ({ decimal }) => {
       );
 
       bitNum++;
-      counter = quotient;
+      decimal = quotient;
     }
 
     return calculations;
