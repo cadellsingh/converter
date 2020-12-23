@@ -17,6 +17,7 @@ const NumberSystem = ({ input, text, valid, displaySteps }) => {
     <div>
       <form>
         <TextField
+          id={text}
           variant="outlined"
           label={!valid ? "Invalid" : capitalize(text)}
           name={text}
