@@ -23,9 +23,11 @@ const calculationButtons = {
 
 // determines which "show steps" button to show
 const buttonReducer = (state, action) => {
-  showCalculationButton(state, true);
-
   let value = action.value;
+
+  action.value === ""
+    ? showCalculationButton(state, false)
+    : showCalculationButton(state, true);
 
   switch (action.type) {
     case "decimal":
