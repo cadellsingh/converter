@@ -1,19 +1,20 @@
 import "./App.css";
 import React, { useState, useReducer } from "react";
-import NumberSystemRow from "./NumberSystemRow";
+import NumberSystemRow from "./components/NumberSystemRow";
 import { decimalToBinary } from "./utils/decimalToBinary";
 import { decimalToHexadecimal } from "./utils/decimalToHexadecimal";
 import { binaryToDecimal } from "./utils/binaryToDecimal";
 import { binaryToHexadecimal } from "./utils/binaryToHexadecimal";
 import { hexadecimalToDecimal } from "./utils/hexadecimalToDecimal";
 import { hexadecimalToBinary } from "./utils/hexadecimalToBinary";
-import Calculations from "./Calculations";
+import Calculations from "./components/Calculations";
 import MyContext from "./MyContext";
 import {
   binaryValidation,
   decimalValidation,
   hexadecimalValidation,
 } from "./utils/validation";
+import Header from "./components/Header";
 
 const calculationButtons = {
   decimal: false,
@@ -114,6 +115,7 @@ const App = () => {
 
   return (
     <div>
+      <Header />
       <MyContext.Provider
         value={{
           input: input,

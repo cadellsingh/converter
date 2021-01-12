@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { motion } from "framer-motion";
-import MyContext from "./MyContext";
+import MyContext from "../MyContext";
 
 const Button = ({ text, displaySteps }) => {
   const { handleOnButtonClick } = useContext(MyContext);

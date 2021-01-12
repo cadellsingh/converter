@@ -9,7 +9,7 @@ import {
   TableCellCalculation,
 } from "../utils/styling";
 import TableRow from "@material-ui/core/TableRow";
-import DisplayCalculation from "../DisplayCalculation";
+import DisplayCalculation from "../components/DisplayCalculation";
 import { hexadecimalToBinary } from "../utils/hexadecimalToBinary";
 
 const HexadecimalToBinaryCalculation = ({ hexadecimal }) => {

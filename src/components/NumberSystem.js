@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "./Button";
-import { TextfieldStyling } from "./utils/styling";
-import MyContext from "./MyContext";
+import { TextfieldStyling } from "../utils/styling";
+import MyContext from "../MyContext";
 
 const NumberSystem = ({ input, text, valid, displaySteps }) => {
   const { handleOnChange } = useContext(MyContext);

@@ -7,7 +7,7 @@ import {
 } from "../utils/styling";
 import { uid } from "../utils/helpers";
 import TableRow from "@material-ui/core/TableRow";
-import DisplayCalculation from "../DisplayCalculation";
+import DisplayCalculation from "../components/DisplayCalculation";
 import { decimalToBinary } from "../utils/decimalToBinary";
 
 const DecimalToBinaryCalculation = ({ decimal }) => {

@@ -4,8 +4,8 @@ import {
   binaryValidation,
   decimalValidation,
   hexadecimalValidation,
-} from "./utils/validation";
-import MyContext from "./MyContext";
+} from "../utils/validation";
+import MyContext from "../MyContext";
 
 const NumberSystemRow = () => {
   const { input, displaySteps } = useContext(MyContext);

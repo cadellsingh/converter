@@ -13,7 +13,7 @@ import {
   TableCellCalculation,
 } from "../utils/styling";
 import TableRow from "@material-ui/core/TableRow";
-import DisplayCalculation from "../DisplayCalculation";
+import DisplayCalculation from "../components/DisplayCalculation";
 import { binaryToHexadecimal } from "../utils/binaryToHexadecimal";
 
 const BinaryToHexadecimalCalculation = ({ binary }) => {

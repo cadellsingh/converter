@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import DecimalCalculation from "./DecimalCalculation/DecimalCalculation";
-import BinaryCalculation from "./BinaryCalculation/BinaryCalculations";
-import HexadecimalCalculation from "./HexadecimalCalculation/HexadecimalCalculation";
-import MyContext from "./MyContext";
+import DecimalCalculation from "../DecimalCalculation/DecimalCalculation";
+import BinaryCalculation from "../BinaryCalculation/BinaryCalculations";
+import HexadecimalCalculation from "../HexadecimalCalculation/HexadecimalCalculation";
+import MyContext from "../MyContext";
 
 const Calculations = ({ showStepsFor }) => {
   const { input, displaySteps } = useContext(MyContext);

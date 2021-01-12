@@ -2,6 +2,15 @@ html {
   background-color: #032535;
 }
 
+header {
+  text-align: center;
+}
+
+header h1 {
+  color: #ffb515;
+  letter-spacing: 3px;
+}
+
 .footer {
   padding: 15px;
   text-align: center;
@@ -19,7 +28,7 @@ html {
 
 .grid-item {
   width: 70%;
-  margin-top: 45px;
+  margin-top: 30px;
 }
 
 .button {
@@ -54,6 +63,12 @@ html {
 
   .grid-item {
     width: 80%;
+  }
+}
+
+@media (max-width: 570px) {
+  header h1 {
+    font-size: 22px;
   }
 }
 

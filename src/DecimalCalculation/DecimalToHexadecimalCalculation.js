@@ -7,7 +7,7 @@ import {
   TableCellCalculation,
 } from "../utils/styling";
 import TableRow from "@material-ui/core/TableRow";
-import DisplayCalculation from "../DisplayCalculation";
+import DisplayCalculation from "../components/DisplayCalculation";
 import { decimalToHexadecimal } from "../utils/decimalToHexadecimal";
 
 const DecimalToHexadecimalCalculation = ({ decimal }) => {
