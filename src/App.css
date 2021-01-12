@@ -2,11 +2,8 @@ html {
   background-color: #032535;
 }
 
-header {
-  text-align: center;
-}
-
 header h1 {
+  text-align: center;
   color: #ffb515;
   letter-spacing: 3px;
 }
