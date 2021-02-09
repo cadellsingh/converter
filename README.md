@@ -14,6 +14,7 @@
 
 - JavaScript ES6
 - Reactjs
+- useContext api
 - Material UI
 - Framer Motion & React-animation for animations
 - HTML/CSS
