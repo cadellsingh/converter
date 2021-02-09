@@ -5,10 +5,12 @@ import {
   decimalValidation,
   hexadecimalValidation,
 } from "../utils/validation";
-import MyContext from "../MyContext";
+import { GlobalContext } from "../context/GlobalState";
 
 const NumberSystemRow = () => {
-  const { input, displaySteps } = useContext(MyContext);
+  const { inputs: input, buttonState: displaySteps } = useContext(
+    GlobalContext
+  );
 
   return (
     <div className="number-system-grid">

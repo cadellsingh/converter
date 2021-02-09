@@ -2,10 +2,12 @@ import React, { useContext } from "react";
 import DecimalCalculation from "../DecimalCalculation/DecimalCalculation";
 import BinaryCalculation from "../BinaryCalculation/BinaryCalculations";
 import HexadecimalCalculation from "../HexadecimalCalculation/HexadecimalCalculation";
-import MyContext from "../MyContext";
+import { GlobalContext } from "../context/GlobalState";
 
-const Calculations = ({ showStepsFor }) => {
-  const { input, displaySteps } = useContext(MyContext);
+const Calculations = () => {
+  const { inputs: input, buttonState: displaySteps, showStepsFor } = useContext(
+    GlobalContext
+  );
 
   // returns true if no input has been clicked on
   const hideCalculation = Object.values(displaySteps).every((value) => !value);
